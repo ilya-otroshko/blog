@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
     def about
-        @heading = 'Страничка о нас'
-        @text = 'немного текста'
+        @heading = 'Page about us'
+        @text = 'some text'
     end
 end

@@ -1,30 +1,30 @@
 <h1><%= @post.title%></h1>
 <p><%= @post.body%></p>
 <hr>
-<%= link_to "Редактировать", edit_post_path(@post), :class => 'btn btn-warning'%>
-<%= link_to "Удалить пост", post_path(@post), method: :delete, data:{confirm: "Хотите удалить статью?"}, :class => 'btn btn-danger'%>
+<%= link_to "Edit", edit_post_path(@post), :class => 'btn btn-warning'%>
+<%= link_to "Remove", post_path(@post), method: :delete, data:{confirm: "want to remove article"}, :class => 'btn btn-danger'%>
 <hr>
-<h2>Все комментарии</h2>
+<h2>All comments</h2>
 <% @post.comments.each do |comment|%>
  <div class="alert alert-light">
         <p><strong><%= comment.username %></strong>: <%= comment.body %></p>
+        <%= link_to "Remove", [comment.post, comment], method: :delete, data:{confirm: "want to remove comment"}, :class => 'btn btn-danger'%>
     </div>
 <% end %>
 <hr>
-<h2>Добавить комментарий</h2>
+<h2>Add a comment</h2>
 <%= form_for([@post, @post.comments.build]) do |f| %>
     <p>
-    Пользователь<br>
+    User<br>
     <%= f.text_field(:username, {:class => 'form-control'}) %>
     </p>
 
-     <p>
-    Текст комментария<br>
+     <p>Comment text<br>
     <%= f.text_area(:body, {:class => 'form-control'}) %>
     </p>
 
       <p>
-    <%= f.submit("Добавить комментарий", {:class => 'btn btn-warning'}) %>
+    <%= f.submit("Add a comment", {:class => 'btn btn-warning'}) %>
     </p>
 
     <% end %>
