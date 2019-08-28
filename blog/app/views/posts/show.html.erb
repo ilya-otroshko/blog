@@ -1,11 +1,12 @@
 <h1><%= @post.title%></h1>
+<p><%= image_tag @post.image.url(:large) if @post.image?%></p>
 <p><%= @post.body%></p>
 <hr>
 <%= link_to "Edit", edit_post_path(@post), :class => 'btn btn-warning'%>
 <%= link_to "Remove", post_path(@post), method: :delete, data:{confirm: "want to remove article"}, :class => 'btn btn-danger'%>
 <hr>
 <h2>All comments</h2>
-<% @post.comments.each do |comment|%>
+ <% @post.comments.each do |comment|%>
  <div class="alert alert-light">
         <p><strong><%= comment.username %></strong>: <%= comment.body %></p>
         <%= link_to "Remove", [comment.post, comment], method: :delete, data:{confirm: "want to remove comment"}, :class => 'btn btn-danger'%>

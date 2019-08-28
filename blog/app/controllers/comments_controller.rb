@@ -1,21 +1,25 @@
 class CommentsController < ApplicationController
     # http_basic_authenticate_with name: "admin", password: "123qwe"
+    before_action :set_comment, only: [ :create, :destroy ]
     def create
-        @post = Post.find(params[:post_id])
         @comment = @post.comments.create(comment_params)
         redirect_to post_path(@post)
     end
 
     def destroy
-        @post = Post.find(params[:post_id])
         @comment = @post.comments.find(params[:id])
         @comment.destroy
         redirect_to post_path(@post)
 
     end
 
-    private def comment_params
+    private 
+    def comment_params
         params.require(:comment).permit(:username, :body)
+    end
+
+    def set_comment
+        @post = Post.find(params[:post_id])
     end
 
 end
