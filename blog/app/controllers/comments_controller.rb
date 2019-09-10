@@ -13,10 +13,10 @@ class CommentsController < ApplicationController
       @comment.user_id = current_user
       respond_to do |format|
           if @comment.save
-            format.html {redirect_to  @commentable, notice: 'Your comment was successfully posted!'}
-            format.js 
+            format.html {redirect_to posts_path, notice: 'Your comment was successfully posted!'}
+            format.js
           else
-            redirect_to @commentable, notice: "Your comment wasn't posted!"
+            format.js {render partial: "error.js.erb"}
           end
         end
     end
@@ -37,7 +37,7 @@ class CommentsController < ApplicationController
         private
     
         def comment_params
-          params.require(:comment).permit(:body)
+          params.require(:comment).permit(:body, :commentable_id, :commentable_type)
         end
         def set_comment
           @comment = Comment.find(params[:id])

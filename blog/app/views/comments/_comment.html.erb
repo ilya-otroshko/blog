@@ -1,21 +1,24 @@
-<li class="commentForm" data-comment_id=<%=comment.id%>>
-  <%= comment.body %>
-  <small>Submitted <%= time_ago_in_words(comment.created_at) %> ago</small>
+<li class="commentForm" data-comment-id=<%=comment.id%>>
+<span>Submitted <%= time_ago_in_words(comment.created_at) %> ago</span>
+  <div class="textComment"><%= comment.body %></div>
+  
 <% if current_user %>
 
-  <%= form_with( model:[comment, Comment.new])  do |f| %>
+  <%= form_with( model:[comment, Comment.new], class:"commentForComment")  do |f| %>
+      
+      <span class="deleteAction"> Delete</span>
+      <span class="showCommentForm"> Reply</span>
       <%= f.hidden_field :commentable_id %>
       <%= f.hidden_field :commentable_type%>
-	  <%= f.hidden_field :user_id, :value => @current_user %>
-      <%= f.text_area :body, :placeholder => "Add a Reply" %><br/>
-      <%= f.submit "Reply"  %>
-      <span class="deleteAction"> Remove</span>
-      <%# , comment, method: :delete, :class => 'btn btn-danger', :id => 'remove' %>
+      <%= f.hidden_field :user_id, :value => @current_user %>
+     <div class="show_comment_form"><%= f.text_area :body, :placeholder => "Add a Reply" %><br/>
+      <%= f.submit "Reply"  %></div>  
+
       <% end %>
 
 <% end %>
 
-  <ul>
+  <ul class="commentList" data-comment-id=<%=comment.id%>>
       <%= render partial: 'comments/comment', collection: comment.comments %>
   </ul>
 

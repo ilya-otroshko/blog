@@ -9,23 +9,22 @@
 <hr>  
 <% end %>
 
-
-
 <small>Submitted <%= time_ago_in_words(@post.created_at) %> ago</small>
 
-<h3>Comments</h3>
+
+
+<ul class="commentList" data-comment-id=<%=@post.id%>>
+  <%= render(partial: 'comments/comment', collection: @post.comments) %>
+</ul>
+
 <% if current_user %>
 
-<%= form_with( model:[@post, Comment.new]) do |f| %>
+<%= form_with( model:[@post, Comment.new], class: "commentForPost") do |f| %>
 
 <%= f.hidden_field :commentable_id %>
 <%= f.hidden_field :commentable_type%>
 <%= f.hidden_field :user_id, :value => @current_user %>
-<%= f.text_area :body, placeholder: "Add a comment" %>
-<%= f.submit "Add Comment" %>
-
+<%= f.text_area :body, placeholder: "Add a comment", id: "clearInput"%>
+<%= f.submit "Add Comment", class: "addComment" %>
 <% end %>
 <% end %>
-<ul>
-  <%= render(partial: 'comments/comment', collection: @post.comments) %>
-</ul>
