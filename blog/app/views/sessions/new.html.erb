@@ -2,18 +2,18 @@
 
 <h1>Login</h1>
 
-<%= form_tag sessions_path do |form| %>
+<%= form_with(url:"sessions", :class => 'form-signin') do |form| %>
 <div class="field">
-    <%= label_tag :email %>
-    <%= text_field_tag :email %>
-</div>
+    <%= form.label :email %>
+    <%= form.text_field :email, :placeholder => "Email", :class => 'form-control' %>
+  </div>
 
-<div class="field">
-    <%= label_tag :password %>
-    <%= password_field_tag :password %>
-</div>
+  <div class="field">
+    <%= form.label :password %>
+    <%= form.password_field :password, :placeholder => "Password", :class => 'form-control' %>
+  </div>
 
 <div class="actions">
-    <%= submit_tag "Login" %>
+    <%= form.submit "Login", :class => "btn btn-lg btn-primary btn-block" %>
 </div>
 <% end %>

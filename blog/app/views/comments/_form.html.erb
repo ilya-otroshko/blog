@@ -1,0 +1,24 @@
+<%= form_for @comment do |f| %>
+  <div>
+    <%= f.label :body %>
+    <%= f.text_field :body %>
+  </div>
+
+  <div>
+    <%= f.label :comment %>
+    <%= f.text_area :comment %>
+  </div>
+
+<% unless params[:comment] && params[:comment][:commentable_id] && params[:comment][:commentable_type] %>
+      <%= f.hidden_field :commentable_id,    :value => @post.id %>
+      <%= f.hidden_field :commentable_type,  :value => "Post" %>
+    <% else %>
+      <%= f.hidden_field :commentable_id,    :value => params[:comment][:commentable_id] %>
+      <%= f.hidden_field :commentable_type,  :value => params[:comment][:commentable_type] %>
+    <% end %>
+    <%= hidden_field_tag :post_id, params[:post_id] ? params[:post_id]:@post.id %>
+    <%= f.hidden_field :user_id, :value => @current_user.id %>
+  <div>
+    <%= f.submit %>
+  </div><br>
+<% end %>

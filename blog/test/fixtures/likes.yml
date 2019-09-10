@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  count: MyText
+  liketable_id: 1
+  liketable_type: MyString
+
+two:
+  count: MyText
+  liketable_id: 1
+  liketable_type: MyString

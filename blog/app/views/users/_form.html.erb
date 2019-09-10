@@ -1,32 +1,36 @@
-<%= form_with(model: user, local: true) do |form| %>
+
+<%= form_with(model: user, local: true, :class => 'form-signin') do |form| %>
+
   <% if user.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
       <ul>
         <% user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+          <li><i class="fas fa-times"></i><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
+ <div class="field">
+    <%= form.label :login %>
+    <%= form.text_field :login, :placeholder => "Login", :class => 'form-control' %>
+  </div>
 
   <div class="field">
     <%= form.label :email %>
-    <%= form.text_field :email %>
+    <%= form.text_field :email, :placeholder => "Email", :class => 'form-control' %>
   </div>
 
   <div class="field">
     <%= form.label :password %>
-    <%= form.password_field :password %>
+    <%= form.password_field :password, :placeholder => "Password", :class => 'form-control' %>
   </div>
 
   <div class="field">
     <%= form.label :password_confirmation %>
-    <%= form.password_field :password_confirmation %>
+    <%= form.password_field :password_confirmation, :placeholder => "Confirm password", :class => 'form-control' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Registration", :class => "btn btn-lg btn-primary btn-block"%>
   </div>
 <% end %>

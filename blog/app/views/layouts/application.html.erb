@@ -13,12 +13,18 @@
   <body>
   <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
   <h5 class="my-0 mr-md-auto font-weight-bold">Ninja Team</h5>
-  <nav class="my-2 my-md-0 mr-md-3">
-    <span class="p-2 text-dark"><%= link_to "Main page", home_path %> </span>
-    <span class="p-2 text-dark"><%= link_to "About us", about_path %></span>
-    <span class="p-2 text-dark"><%= link_to "Add a post", new_post_path %></span>
-    <span class="p-2 text-dark"><%= link_to "Users", users_path %></span>
-    <span class="p-2 text-dark"><%= link_to "Signup", signup_path %></span>
+  <nav >
+<%= link_to "Home", home_path, :class => "headerLink", :id => "home" %>   
+  <% if current_user %>
+  <%= link_to current_user.login, user_path(current_user), :class => "headerLink" %>  
+  <%= link_to "Users", users_path, :class => "headerLink" %> 
+   <%= link_to "Log Out", logout_path, :class => "headerLink" %> 
+    <% else %> 
+    <%= link_to "User Login", login_path, :class => "headerLink" %>
+    <%= link_to "User Registration", signup_path, :class => "headerLink" %> 
+    <% end %>
+     
+    
   </nav>
 </div>
     <div class="container">

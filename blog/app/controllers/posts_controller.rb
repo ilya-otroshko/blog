@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-
+    before_action :only_signed_in_user, only: [:edit, :new, :destroy, :update]
     before_action :set_post, only: [ :show, :edit, :update, :destroy ]
 
     def index
@@ -7,16 +7,22 @@ class PostsController < ApplicationController
     end
 
     def new
-        @post = Post.new
+        @post = current_user.posts.build
     end
 
     def show
     end 
     
     def edit
+         if current_user && current_user.id == @post.user_id 
+            
+         else
+            redirect_to posts_path
+         end
     end 
 
     def update
+
         if(@post.update_attributes(post_params))
             redirect_to @post
        else
@@ -30,8 +36,7 @@ class PostsController < ApplicationController
     end
 
     def create
-        # render plain:params[:post].inspect
-        @post = Post.new(post_params)
+        @post = current_user.posts.new(post_params)
 
         if(@post.save)
              redirect_to @post
@@ -41,9 +46,8 @@ class PostsController < ApplicationController
     end
      
     private 
-
     def post_params
-        params.require(:post).permit(:title, :body, :image)
+        params.require(:post).permit(:title, :body)
     end
 
     def set_post

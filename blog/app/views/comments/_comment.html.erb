@@ -1,0 +1,22 @@
+<li class="commentForm" data-comment_id=<%=comment.id%>>
+  <%= comment.body %>
+  <small>Submitted <%= time_ago_in_words(comment.created_at) %> ago</small>
+<% if current_user %>
+
+  <%= form_with( model:[comment, Comment.new])  do |f| %>
+      <%= f.hidden_field :commentable_id %>
+      <%= f.hidden_field :commentable_type%>
+	  <%= f.hidden_field :user_id, :value => @current_user %>
+      <%= f.text_area :body, :placeholder => "Add a Reply" %><br/>
+      <%= f.submit "Reply"  %>
+      <span class="deleteAction"> Remove</span>
+      <%# , comment, method: :delete, :class => 'btn btn-danger', :id => 'remove' %>
+      <% end %>
+
+<% end %>
+
+  <ul>
+      <%= render partial: 'comments/comment', collection: comment.comments %>
+  </ul>
+
+</li>

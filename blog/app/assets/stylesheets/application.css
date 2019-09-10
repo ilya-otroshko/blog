@@ -13,3 +13,16 @@
  *= require_tree .
  *= require_self
  */
+ .headerLink
+ {
+    font-size: 18px;
+    color: black;
+    margin: 10px;
+ }
+ .headerLink:hover
+ {
+    text-decoration: none;
+    color: black;
+    background: transparent;
+
+ }
