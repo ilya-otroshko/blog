@@ -1,0 +1,12 @@
+<div class="like">
+<%= form_with( model: Like.new(liketable_type: "Post"), class: "likeForPost") do |f| %>
+<%= f.hidden_field :liketable_id , :value => @post.id%>
+<%= f.hidden_field :liketable_type, :value => @post.class.to_s%>
+<%= f.hidden_field :count , :value => @post.likes.count.to_i + 1%>
+<% if @object == nil %>
+<button type="submit"><i class="far fa-thumbs-up"></i></button>
+<% else %>
+<span data-like-id=<%= @object.id%>><i class="far fa-thumbs-down"></i></span>
+<% end %>
+</div>
+<% end %>

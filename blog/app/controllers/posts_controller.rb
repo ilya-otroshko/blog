@@ -11,6 +11,8 @@ class PostsController < ApplicationController
     end
 
     def show
+         @object = @post.likes.find_by_user_id(current_user)
+   
     end 
     
     def edit

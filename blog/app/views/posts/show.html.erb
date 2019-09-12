@@ -2,6 +2,10 @@
 <h1><%= @post.title%></h1>
 <p><%= @post.body%></p>
 
+
+<%= render 'likes/likes' %>
+
+
 <% if current_user && current_user.id == @post.user_id %>
 <hr>
 <%= link_to "Edit", edit_post_path(@post), :class => 'btn btn-warning'%>
@@ -11,20 +15,17 @@
 
 <small>Submitted <%= time_ago_in_words(@post.created_at) %> ago</small>
 
-
-
 <ul class="commentList" data-comment-id=<%=@post.id%>>
   <%= render(partial: 'comments/comment', collection: @post.comments) %>
 </ul>
 
 <% if current_user %>
 
-<%= form_with( model:[@post, Comment.new], class: "commentForPost") do |f| %>
+<%= form_with( model: Comment.new(commentable_type: "Post"), class: "commentForPost") do |f| %>
 
-<%= f.hidden_field :commentable_id %>
-<%= f.hidden_field :commentable_type%>
-<%= f.hidden_field :user_id, :value => @current_user %>
-<%= f.text_area :body, placeholder: "Add a comment", id: "clearInput"%>
+<%= f.hidden_field :commentable_id , :value => @post.id%>
+<%= f.hidden_field :commentable_type, :value => @post.class.to_s%>
+<%= f.text_area :body, placeholder: "Add a comment", class: "clearInput"%>
 <%= f.submit "Add Comment", class: "addComment" %>
 <% end %>
 <% end %>

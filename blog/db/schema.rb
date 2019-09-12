@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_04_090747) do
+ActiveRecord::Schema.define(version: 2019_09_12_091157) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.text "body"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2019_09_04_090747) do
     t.integer "count"
     t.integer "liketable_id"
     t.string "liketable_type"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

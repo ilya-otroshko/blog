@@ -1,16 +1,19 @@
 class CommentsController < ApplicationController
     before_action :find_commentable
+    before_action :only_signed_in_user, only: [:edit, :new, :destroy, :update]
     before_action :set_comment, only: [:edit, :update, :destroy ]
 
         def new
-          @comment = Comment.new
+            @comment = Comment.new
         end
     
-		def create
-			# current_user.comments.create(commentable_type: 'Post/Comment', commentable_id: 'id', body: 'qwe')
+        def create
+       
+      @comment = current_user.comments.new(comment_params)
+      
+      @commentable = comment_params[:commentable_id]
 
-      @comment = @commentable.comments.new(comment_params)
-      @comment.user_id = current_user
+      p (@commentable)
       respond_to do |format|
           if @comment.save
             format.html {redirect_to posts_path, notice: 'Your comment was successfully posted!'}
@@ -21,8 +24,15 @@ class CommentsController < ApplicationController
         end
     end
 		
-        def update
-       
+        def update 
+          if current_user && current_user.id == @comment.user_id 
+            if (@comment.update(body: params[:body]))
+            else
+                render partial: "error.js.erb"
+            end
+          else  
+            render partial: "error.js.erb"
+          end
 		end
 
 	def destroy
@@ -37,7 +47,7 @@ class CommentsController < ApplicationController
         private
     
         def comment_params
-          params.require(:comment).permit(:body, :commentable_id, :commentable_type)
+          params.require(:comment).permit(:body,:commentable_id, :commentable_type)
         end
         def set_comment
           @comment = Comment.find(params[:id])

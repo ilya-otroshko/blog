@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
-
-  resources :likes
-  resources :documents
   root 'posts#index', as: 'home'
+
+
+  resources :likes, only: [:create, :destroy]
+  resources :documents
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  
   get 'signup' => 'users#new', as: 'signup'
   get 'login' => 'sessions#new', as: 'login'
   get 'logout' => 'sessions#destroy', as: 'logout'
@@ -13,7 +15,7 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments
     end
-
+    
     resources :posts do
       resources :documents
       end

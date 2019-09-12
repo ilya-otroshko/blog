@@ -1,17 +1,20 @@
 <li class="commentForm" data-comment-id=<%=comment.id%>>
+  <p><%= comment.user.login%></p>
 <span>Submitted <%= time_ago_in_words(comment.created_at) %> ago</span>
   <div class="textComment"><%= comment.body %></div>
   
 <% if current_user %>
 
-  <%= form_with( model:[comment, Comment.new], class:"commentForComment")  do |f| %>
-      
+  <%= form_with( model: Comment.new(commentable_type: "Comment"),    class:"commentForComment")  do |f| %>
+  
+  <% if current_user && current_user.id == comment.user_id%>
+       <i class="far fa-thumbs-up"></i>
       <span class="deleteAction"> Delete</span>
+      <% end %>
       <span class="showCommentForm"> Reply</span>
-      <%= f.hidden_field :commentable_id %>
-      <%= f.hidden_field :commentable_type%>
-      <%= f.hidden_field :user_id, :value => @current_user %>
-     <div class="show_comment_form"><%= f.text_area :body, :placeholder => "Add a Reply" %><br/>
+     <%= f.hidden_field :commentable_id , :value => comment.id%>
+     <%= f.hidden_field :commentable_type, :value => comment.class.to_s%>
+     <div class="show_comment_form"><%= f.text_area :body, class: "clearInput", :placeholder => "Add a Reply" %><br/>
       <%= f.submit "Reply"  %></div>  
 
       <% end %>

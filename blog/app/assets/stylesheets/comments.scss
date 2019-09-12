@@ -72,3 +72,19 @@
 .on {
     display: block!important;
   }
+
+#clearInput
+{
+    border-radius: 5px;
+
+}
+
+#editbox
+{
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid ghostwhite;
+    padding: 8px 10px 8px 10px;
+    margin: -10px -10px -10px -10px;
+    outline: none;
+}

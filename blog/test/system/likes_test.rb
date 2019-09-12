@@ -17,6 +17,7 @@ class LikesTest < ApplicationSystemTestCase
     fill_in "Count", with: @like.count
     fill_in "Liketable", with: @like.liketable_id
     fill_in "Liketable type", with: @like.liketable_type
+    fill_in "User", with: @like.user_id
     click_on "Create Like"
 
     assert_text "Like was successfully created"
@@ -30,6 +31,7 @@ class LikesTest < ApplicationSystemTestCase
     fill_in "Count", with: @like.count
     fill_in "Liketable", with: @like.liketable_id
     fill_in "Liketable type", with: @like.liketable_type
+    fill_in "User", with: @like.user_id
     click_on "Update Like"
 
     assert_text "Like was successfully updated"
