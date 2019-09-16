@@ -1,5 +1,5 @@
 class LikesController < ApplicationController
-    before_action :find_liketable
+  before_action :find_liketable
   before_action :set_like, only: [:show, :edit, :update, :destroy]
   before_action :only_signed_in_user, only: [:edit, :new, :destroy, :update]
   def new
@@ -7,11 +7,13 @@ class LikesController < ApplicationController
   end
 
   def create
-    @like = current_user.likes.new(like_params)
-
+	
+	@like = current_user.likes.new(like_params)
+	@object = @like.liketable
     respond_to do |format|
-      if @like.save
-        format.js
+	  if @like.save
+		format.html 
+		format.js 
       else
         format.js
       end
@@ -20,7 +22,7 @@ class LikesController < ApplicationController
 
  
   def destroy
-
+	@object = @like.liketable
     @like.destroy
     respond_to do |format|
       format.js
@@ -34,10 +36,10 @@ class LikesController < ApplicationController
     end
 
     def like_params
-      params.require(:like).permit(:count, :liketable_id, :liketable_type, :user_id)
+     params.fetch(:like, {}).permit(:count, :liketable_id, :liketable_type)
     end
     def find_liketable
-        @liketable = Comment.find_by_id(params[:comment_id]) if params[:comment_id]
-        @liketable = Post.find_by_id(params[:post_id]) if params[:post_id]
+		@liketable = Comment.find_by_id(like_params[:liketable_id]) if like_params[:liketable_type ]
+        @liketable = Post.find_by_id(like_params[:liketable_id]) if like_params[:liketable_type ]
       end
 end

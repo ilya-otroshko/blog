@@ -1,12 +1,21 @@
 <div class="like">
-<%= form_with( model: Like.new(liketable_type: "Post"), class: "likeForPost") do |f| %>
-<%= f.hidden_field :liketable_id , :value => @post.id%>
-<%= f.hidden_field :liketable_type, :value => @post.class.to_s%>
-<%= f.hidden_field :count , :value => @post.likes.count.to_i + 1%>
-<% if @object == nil %>
-<button type="submit"><i class="far fa-thumbs-up"></i></button>
+<p id="count"><%= object.likes.count%></p>
+
+
+<% if current_user && current_user.likes.find_by_liketable_id(object.id) == nil %>
+
+<%= form_with( model: Like.new) do |f| %>
+<%= f.hidden_field :liketable_id , :value => object.id%>
+<%= f.hidden_field :liketable_type, :value => object.class.to_s%>
+<%= f.hidden_field :count , :value => object.likes.count.to_i + 1%>
+<button type="submit" id="likeUp"><i class="far fa-thumbs-up"></i></button>
+<% end %>
+
 <% else %>
-<span data-like-id=<%= @object.id%>><i class="far fa-thumbs-down"></i></span>
+
+<% if current_user %>
+    <span data-like-id="<%= current_user.likes.find_by_liketable_id(object.id).id%>" id="likeDown"><i class="far fa-thumbs-down"></i></span>
+<% end %>
+
 <% end %>
 </div>
-<% end %>

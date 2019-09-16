@@ -11,8 +11,7 @@ class PostsController < ApplicationController
     end
 
     def show
-         @object = @post.likes.find_by_user_id(current_user)
-   
+
     end 
     
     def edit
@@ -49,7 +48,7 @@ class PostsController < ApplicationController
      
     private 
     def post_params
-        params.require(:post).permit(:title, :body)
+        params.require(:post).permit(:title, :body, {documents: []} )
     end
 
     def set_post

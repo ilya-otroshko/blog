@@ -2,8 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.like, 
+.like 
 {
+    #likeUp
+    {
+        color: green;
+    }
+    #likeDown
+    {
+        color: red;
+    }
     width: fit-content;
     button, span
     {

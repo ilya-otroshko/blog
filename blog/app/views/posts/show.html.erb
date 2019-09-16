@@ -1,10 +1,12 @@
 <p id="notice"><%= notice %></p>
 <h1><%= @post.title%></h1>
 <p><%= @post.body%></p>
+<p><%= @post.documents.first {:large}%></p>
 
 
-<%= render 'likes/likes' %>
-
+<div data-object-id="<%= @post.id %>" data-object-type="Post">
+<%= render 'likes/likes', object: @post%>
+</div>
 
 <% if current_user && current_user.id == @post.user_id %>
 <hr>

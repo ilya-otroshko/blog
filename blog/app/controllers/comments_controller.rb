@@ -8,12 +8,10 @@ class CommentsController < ApplicationController
         end
     
         def create
-       
       @comment = current_user.comments.new(comment_params)
       
       @commentable = comment_params[:commentable_id]
-
-      p (@commentable)
+      
       respond_to do |format|
           if @comment.save
             format.html {redirect_to posts_path, notice: 'Your comment was successfully posted!'}
