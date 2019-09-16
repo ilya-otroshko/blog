@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_16_081920) do
+ActiveRecord::Schema.define(version: 2019_09_16_123236) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.text "body"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2019_09_16_081920) do
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "document"
   end
 
   create_table "documents", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
@@ -53,8 +54,7 @@ ActiveRecord::Schema.define(version: 2019_09_16_081920) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.json "documents"
-    t.json "avatars"
+    t.string "document"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

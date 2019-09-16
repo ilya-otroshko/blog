@@ -1,3 +1,9 @@
+
+  
+    <%= image_tag(@user.document.thumb.url, alt: 'Image') if @user.document?%>
+
+
+
 <p>
   <strong>Email:</strong>
   <%= @user.email %>

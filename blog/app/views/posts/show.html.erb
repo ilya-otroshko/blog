@@ -1,7 +1,16 @@
 <p id="notice"><%= notice %></p>
 <h1><%= @post.title%></h1>
+
 <p><%= @post.body%></p>
-<p><%= @post.documents.first {:large}%></p>
+
+<% if @post.documents? %>
+  <ul class="picture">
+    <% @post.documents.each do |documents| %>
+      <li><%= image_tag(documents.large.url, alt: 'Image')%></li>
+    <% end %>
+  </ul>
+<% end %>
+ 
 
 
 <div data-object-id="<%= @post.id %>" data-object-type="Post">
@@ -29,5 +38,11 @@
 <%= f.hidden_field :commentable_type, :value => @post.class.to_s%>
 <%= f.text_area :body, placeholder: "Add a comment", class: "clearInput"%>
 <%= f.submit "Add Comment", class: "addComment" %>
+
+    <%= f.button("Select Image", {type: "button", onclick: "document.getElementById('getFile').click()", id: "selectImage"}) %>
+    <%= f.file_field(:document, { id: "getFile", style: "display:none"}) %>
+    <%= f.hidden_field(:document_cache) %>
+    <%= f.text_field(:remote_document_url) %>
+
 <% end %>
 <% end %>

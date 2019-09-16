@@ -74,10 +74,20 @@ h1
 {
   width: 100%;
   border: 1px solid #a7a7a7;
-  padding: 10px 0px 10px 20px;
+  border-radius: 5px;
     ul
     {
        padding: 0px;
+       li
+       {
+           list-style: none;
+           font-size: 11px;
+           i
+           {
+               margin: 5px 10px 5px 0px;
+               color: red;
+           }
+       }
     }
 }
 .field_with_errors:nth-child(even)

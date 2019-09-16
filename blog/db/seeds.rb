@@ -6,10 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
+
+
+
 20.times do
 
     User.create(login: Faker::Internet.username, email: Faker::Internet.email, password: "123456", password_confirmation: "123456")
 
-    Post.create(title: Faker::Food.dish, body: Faker::ChuckNorris.fact, user_id: rand(User.first.id...User.last.id))
+    Post.create(title: Faker::Food.dish, body: Faker::Lorem.paragraph(sentence_count: 15, supplemental: true), user_id: rand(User.first.id...User.last.id),  documents:[Rails.root.join("public/uploads/tmp/1568631613-577514290658149-0004-2082/tekstura-ponchiki-fon.jpg").open])
 
 end

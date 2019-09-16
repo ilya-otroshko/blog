@@ -45,7 +45,7 @@ class CommentsController < ApplicationController
         private
     
         def comment_params
-          params.require(:comment).permit(:body,:commentable_id, :commentable_type)
+          params.require(:comment).permit(:body,:commentable_id, :commentable_type, :document, :document_cache, :remove_document, :remote_document_url)
         end
         def set_comment
           @comment = Comment.find(params[:id])

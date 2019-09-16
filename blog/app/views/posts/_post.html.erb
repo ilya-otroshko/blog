@@ -1,5 +1,12 @@
 <div class="postsAll">
     <p>author: <%= post.user.login %></p>
+    <% if post.documents? %>
+  <ul>
+    <% post.documents.each do |documents| %>
+      <li><%= image_tag(documents.large.url, alt: 'Image')%></li>
+    <% end %>
+  </ul>
+<% end %>
     <h3><%= post.title %></h3>
     <p><%= post.body %></p>
     <%= link_to "Read more..", post_path(post), :class => 'btn btn-outline-primary'%>

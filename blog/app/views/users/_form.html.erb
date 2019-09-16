@@ -30,7 +30,31 @@
     <%= form.password_field :password_confirmation, :placeholder => "Confirm password", :class => 'form-control' %>
   </div>
 
-  <div class="actions">
+  
+  <% if current_user %>
+      <div class="field">
+       <%= form.button("Select Image", {type: "button", onclick: "document.getElementById('getFile').click()", id: "selectImage"}) %>
+    <%= form.file_field(:document, { id: "getFile", style: "display:none"}) %>
+    <%= form.hidden_field(:document_cache) %>
+
+        
+
+    <% if user.document? %>
+    <%= image_tag user.document.thumb.url %>
+    <%= form.check_box(:remove_document) %>
+<% end %>
+
+  </div>
+
+     <div class="actions">
+    <%= form.submit "Update", :class => "btn btn-lg btn-primary btn-block"%>
+  </div>
+  <% else %>
+   <div class="actions">
     <%= form.submit "Registration", :class => "btn btn-lg btn-primary btn-block"%>
   </div>
+  <% end %>
+  
+
+ 
 <% end %>

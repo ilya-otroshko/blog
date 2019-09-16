@@ -20,9 +20,11 @@
     </p>
 
    <p>
-    Text<br>
-    <%= f.file_field(:documents, {multiple: true}) %>
-    </p>
+    Image<br>
+    <%= f.button("Select Image", {type: "button", onclick: "document.getElementById('getFile').click()", id: "selectImage"}) %>
+    <%= f.file_field(:documents, {multiple: true, id: "getFile", style: "display:none"}) %>
+   
+  </p>
 
       <p>
     <%= f.submit({:class => 'btn btn-success'}) %>

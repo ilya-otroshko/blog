@@ -21,3 +21,20 @@
        color: black;
        background: white;
     }
+
+    #selectImage
+    {
+     
+    padding: 5px 10px;
+    background: #00C7FF;
+    color: white;
+    border: 1px solid #00C7FF;
+    transition: .5s;
+    border-radius: 5px;
+    margin-top: 20px;
+    }
+    #selectImage:hover
+    {
+    color: #00C7FF;
+    background: white;
+    }
