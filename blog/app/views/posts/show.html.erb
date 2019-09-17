@@ -3,10 +3,10 @@
 
 <p><%= @post.body%></p>
 
-<% if @post.documents? %>
+<% if @post.images? %>
   <ul class="picture">
-    <% @post.documents.each do |documents| %>
-      <li><%= image_tag(documents.large.url, alt: 'Image')%></li>
+    <% @post.images.each do |images| %>
+      <li><%= image_tag(images.large.url, alt: 'Image')%></li>
     <% end %>
   </ul>
 <% end %>
@@ -39,10 +39,10 @@
 <%= f.text_area :body, placeholder: "Add a comment", class: "clearInput"%>
 <%= f.submit "Add Comment", class: "addComment" %>
 
-    <%= f.button("Select Image", {type: "button", onclick: "document.getElementById('getFile').click()", id: "selectImage"}) %>
-    <%= f.file_field(:document, { id: "getFile", style: "display:none"}) %>
-    <%= f.hidden_field(:document_cache) %>
-    <%= f.text_field(:remote_document_url) %>
+    <%= f.button("Select Image", {type: "button", onclick: "document.getElementById('getFilePost').click()", id: "selectImage"}) %>
+    <%= f.file_field(:image, { id: "getFilePost", style: "display:none"}) %>
+    <%= f.hidden_field(:image_cache) %>
+    <%= f.text_field(:remote_image_url) %>
 
 <% end %>
 <% end %>

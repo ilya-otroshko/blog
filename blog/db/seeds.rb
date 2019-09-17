@@ -9,10 +9,10 @@ require 'faker'
 
 
 
-20.times do
+10.times do
 
-    User.create(login: Faker::Internet.username, email: Faker::Internet.email, password: "123456", password_confirmation: "123456")
+    User.create(login: Faker::Internet.username, email: Faker::Internet.email, password: "123456", password_confirmation: "123456",  image:Rails.root.join("public/uploads/user/image/avatar.png").open)
 
-    Post.create(title: Faker::Food.dish, body: Faker::Lorem.paragraph(sentence_count: 15, supplemental: true), user_id: rand(User.first.id...User.last.id),  documents:[Rails.root.join("public/uploads/tmp/1568631613-577514290658149-0004-2082/tekstura-ponchiki-fon.jpg").open])
+    Post.create(title: Faker::Food.dish, body: Faker::Lorem.paragraph(sentence_count: 15, supplemental: true), user_id: rand(User.first.id...User.last.id),  images:[Rails.root.join("public/uploads/user/image/avatar.png").open])
 
 end

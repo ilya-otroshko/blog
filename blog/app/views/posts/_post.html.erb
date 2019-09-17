@@ -1,9 +1,9 @@
 <div class="postsAll">
     <p>author: <%= post.user.login %></p>
-    <% if post.documents? %>
+    <% if post.images? %>
   <ul>
-    <% post.documents.each do |documents| %>
-      <li><%= image_tag(documents.large.url, alt: 'Image')%></li>
+    <% post.images.each do |images| %>
+      <li><%= image_tag(images.large.url, alt: 'Image')%></li>
     <% end %>
   </ul>
 <% end %>
