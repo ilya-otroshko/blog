@@ -3,15 +3,7 @@
 
 <p><%= @post.body%></p>
 
-<% if @post.images? %>
-  <ul class="picture">
-    <% @post.images.each do |images| %>
-      <li><%= image_tag(images.large.url, alt: 'Image')%></li>
-    <% end %>
-  </ul>
-<% end %>
- 
-
+  <%= image_tag(@post.image.large.url, alt: 'Image') if @post.image?%>
 
 <div data-object-id="<%= @post.id %>" data-object-type="Post">
 <%= render 'likes/likes', object: @post%>

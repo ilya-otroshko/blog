@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
     before_action :find_commentable
     before_action :only_signed_in_user, only: [:edit, :new, :destroy, :update]
     before_action :set_comment, only: [:edit, :update, :destroy ]
-
+  
         def new
             @comment = Comment.new
         end
