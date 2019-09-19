@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2019_09_18_101508) do
     t.text "path"
     t.integer "documentable_id"
     t.string "documentable_type"
+    t.integer "post_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -47,7 +48,6 @@ ActiveRecord::Schema.define(version: 2019_09_18_101508) do
     t.datetime "updated_at", precision: 6, null: false
     t.json "images"
     t.string "image"
-    t.string "file"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|

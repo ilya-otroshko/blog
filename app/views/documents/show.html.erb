@@ -3,6 +3,7 @@
 <p>
   <strong>Path:</strong>
   <%= @document.path %>
+  <%= image_tag(@document.path.thumb.url, alt: 'Image')%>
 </p>
 
 <p>

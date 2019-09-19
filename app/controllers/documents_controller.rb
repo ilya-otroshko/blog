@@ -14,6 +14,7 @@ class DocumentsController < ApplicationController
 
   # GET /documents/new
   def new
+
     @document = Document.new
   end
 
