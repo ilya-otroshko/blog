@@ -8,6 +8,7 @@ class PostsController < ApplicationController
 
     def new
         @post = current_user.posts.build
+        @document = @post.documents.build
     end
 
     def show
@@ -40,6 +41,13 @@ class PostsController < ApplicationController
         @post = current_user.posts.new(post_params)
 
         if(@post.save)
+            if params[:documents]
+                params[:documents].each do |document|
+                  @post.documents.create(path: document, documentable_id: @post.id, documentable_type: "Post")
+                  p document
+                  p @post.id
+                end
+            end
              redirect_to @post
         else
             render 'new'
@@ -47,11 +55,12 @@ class PostsController < ApplicationController
     end
      
     private 
-    def post_params
-        params.require(:post).permit(:title, :body, :image, :image_cache, :remove_image, :remote_image_url)
-    end
-
     def set_post
         @post = Post.find(params[:id])
     end
+    
+    def post_params
+        params.require(:post).permit(:title, :body, documents_attributes: [:document, :post_id])
+    end
+
 end

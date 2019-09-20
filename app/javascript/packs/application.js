@@ -9,6 +9,8 @@ require("@rails/activestorage").start()
 require("channels")
 require("./comments.js")
 require("./like.js")
+require("./documents.js")
+require("./users.js")
 require("jquery")
 // require("cloudinary")
 // Uncomment to copy all static images under ../images to the output folder and reference

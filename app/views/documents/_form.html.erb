@@ -1,32 +1,22 @@
-<%= form_with(model: document, local: true) do |form| %>
-  <% if document.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(document.errors.count, "error") %> prohibited this document from being saved:</h2>
-
-      <ul>
-        <% document.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+<%= form_with(model: Document.new) do |form| %>
+	<p><%= @post.inspect%></p>
   <div class="field">
     <%= form.label :path %>
-    <%= form.text_area :path %>
+   <%= form.file_field :path, id: "searchImage" %>
   </div>
 
   <div class="field">
-    <%= form.label :documentable_id %>
-    <%= form.number_field :documentable_id %>
+	<%= form.hidden_field :documentable_id , :value => @post.id%>
+  
   </div>
 
   <div class="field">
-    <%= form.label :documentable_type %>
-    <%= form.text_field :documentable_type %>
+  <%= form.hidden_field :documentable_type, :value => "Post"%>
   </div>
 
+	
   <div class="actions">
-    <%= form.submit %>
+  <%= form.button("Image", {type: "button", id: "selectImage"}) %>
+    <button class="go">Go</button>
   </div>
 <% end %>
