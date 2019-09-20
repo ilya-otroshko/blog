@@ -29,18 +29,14 @@
     </p>
 
 
-   
-<%= form_for(@post, :html => { multipart: true }) do |f| %>
-
-  <%= f.fields_for :documents do |ff| %>
+  <%= f.fields_for :path do |ff| %>
     <div class="field">
-      <%= ff.label :document %><br>
-      <%= ff.file_field :document, multiple: true, name: "documents[]" %>
+      <%= ff.file_field :path, multiple: true, name: "documents[]" %>
     </div>
   <% end %>
 
   <div class="actions">
     <%= f.submit %>
   </div>
-<% end %>
+
     <% end %>

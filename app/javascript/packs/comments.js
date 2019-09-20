@@ -1,5 +1,4 @@
 window.onload = () => {
-
       
     $(document).on('click', ".deleteAction", function(){
     let current_comment = $(this).parents('li')[0]

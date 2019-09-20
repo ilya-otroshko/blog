@@ -31,7 +31,7 @@
     <%= form.password_field :password_confirmation, :placeholder => "Confirm password", :class => 'form-control' %>
   </div>
 
-  <%= form.hidden_field :remote_image_url, :value => Faker::Avatar.image %>
+  
   <% if current_user %>
       <div class="field">
        <%= form.button("Select Image", {type: "button", onclick: "document.getElementById('getFile').click()", id: "selectImage"}) %>
@@ -39,12 +39,11 @@
     <%= form.hidden_field(:image_cache) %>
   
     
-
-        
-
     <% if user.image? %>
     <%= image_tag user.image.thumb.url %>
     <%= form.check_box(:remove_image) %>
+    <% else %>
+    <%= form.hidden_field :remote_image_url, :value => Faker::Avatar.image %>
 <% end %>
 
   </div>

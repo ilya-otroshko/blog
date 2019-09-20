@@ -48,7 +48,7 @@ class PostsController < ApplicationController
                   p @post.id
                 end
             end
-             render '_documents'
+             redirect_to @post
         else
             render 'new'
         end
