@@ -117,6 +117,7 @@ h1
         text-align: center;
         padding: 20px;
         border-top: 1px solid lightgrey;
+
         a
         {
             text-decoration: none;
@@ -224,6 +225,14 @@ h1
     {
     color: black;
     }
+}
+
+.userEditForm
+{
+    display: none;
+    float: right;
+    width: 60%;
+    padding: 50px;
 }
 
 

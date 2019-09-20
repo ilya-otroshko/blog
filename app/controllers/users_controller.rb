@@ -16,7 +16,10 @@ class UsersController < ApplicationController
 
   def edit
     if current_user.id == @user.id 
-            
+      respond_to do |format|
+        format.html
+        format.js
+      end
     else
        redirect_to posts_path
     end

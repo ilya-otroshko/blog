@@ -11,6 +11,8 @@
 <% if current_user == @user %>
 
 <div class="userUpdate">
+
+<button type="button" class="userEdit" data-user-edit-id= <%= current_user.id %>>Edit</button>
 <%= link_to 'Edit', edit_user_path(current_user) %> 
 <%= link_to 'Destroy', current_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 </div>
@@ -34,6 +36,10 @@
 </div>
 
 
+<div class="userEditForm">
 
+<%= render 'form', user: @user %>
+
+</div>
 
 
