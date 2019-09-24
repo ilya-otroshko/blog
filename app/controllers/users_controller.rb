@@ -1,19 +1,22 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :destroy, :show]
   before_action :only_signed_in_user, only: [:index]
+
+  # GET /users
   def index
     @users = User.all
   end
 
-
+  # GET /users/1
   def show
   end
 
+  # GET /signup
   def new
     @user = User.new
   end
 
-
+  # GET /users/1/edit
   def edit
     if current_user.id == @user.id 
       respond_to do |format|
@@ -25,7 +28,7 @@ class UsersController < ApplicationController
     end
   end
 
-
+  # POST /users
   def create
     @user = User.new(user_params)
     
@@ -39,20 +42,20 @@ class UsersController < ApplicationController
     end
   end
 
-
+	# PATCH/PUT /users/1
   def update
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+
+        format.js {render partial: "error.js.erb"}
       end
     end
   end
 
-
+  # DELETE /users/1
   def destroy
     @user.destroy
     respond_to do |format|
@@ -67,6 +70,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:login, :email, :password, :password_confirmation, :image, :image_cache,:remove_image, :remote_image_url)
+	params.require(:user).permit(:login, :email, :password, :password_confirmation, 
+		:image, :image_cache,:remove_image, :remote_image_url)
   end
 end

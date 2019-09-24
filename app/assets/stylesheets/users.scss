@@ -14,7 +14,11 @@
     background-clip: padding-box;
     border: 1px solid #ced4da;
     border-radius: .25rem;
-    transition: border-color .15s 
+    transition: .4s;
+}
+.form-control:focus{
+    box-shadow: 0 0 0 0.2rem rgba(82, 83, 84, 0.19);
+    border-color: #80808096;
 }
 .form-signin
 {   
@@ -103,6 +107,7 @@ h1
 
 .userAvatar
 {   
+    width: 350px;
     float: left;
     border-right: 1px solid lightgrey;
     border-bottom: 1px solid lightgrey;
@@ -118,72 +123,13 @@ h1
         padding: 20px;
         border-top: 1px solid lightgrey;
 
-        a
-        {
+        a:hover{
             text-decoration: none;
-            outline: none;
-            display: inline-block;
-            padding: 20px 30px;
-            margin: 10px 20px;
-            position: relative;
             color: black;
-            background: #80808052;
-            font-weight: 300;
-            font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: 0.4s;
-            border-radius: 5px;
         }
-        a:before,
-        a:after {
-        content: "";
-            position: absolute;
-            width: 0;
-            height: 0;
-            opacity: 0;
-            box-sizing: border-box;
-
+        a:visited{
+            color: black;
         }
-        a:before {
-            bottom: 0;
-            left: 0;
-            border-left: 2px solid black;
-            border-top: 2px solid black;
-
-            transition: 0s ease opacity .8s, .2s ease width .4s, .2s ease height .6s;
-          }
-          a:after {
-            top: 0;
-            right: 0;
-            border-right: 2px solid black;
-            border-bottom: 2px solid black;
-
-            transition: 0s ease opacity .4s, .2s ease width , .2s ease height .2s;
-          }
-          a:hover:before,
-          a:hover:after{
-            height: 100%;
-            width: 100%;
-            opacity: 1;
-
-        }
-        a:hover:before 
-        {
-            transition: 0s ease opacity 0s, .2s ease height, .2s ease width .2s;
-
-        }
-        a:hover:after 
-        {
-            transition: 0s ease opacity .4s, .2s ease height .4s , .2s ease width .6s;
-
-        }
-        a:hover 
-        {
-            background: #80808096;
-          
-        }
-
     }
 }
 
@@ -196,15 +142,19 @@ h1
 }
 .userInfo
 {
-    text-align: center;
     width: 60%;
     float: right;
     padding: 50px;
+    p:first-child{
+        text-align: center;
+        margin-bottom: 30px;
+        font-weight: bold;
+    }
 }
 
 .userNav
 {
-    background: #80808052;
+    margin-top: 3px;
     padding: 10px;
     .wall
     {
@@ -216,7 +166,7 @@ h1
     .info
     {
         cursor: pointer;
-        font-size: 25px;
+        font-size: 21px;
         color: #80808096; 
         transition: .4s;
     }
@@ -244,4 +194,152 @@ h1
 .off
 {
     display: none!important;
+}
+
+.userEdit
+{
+    border: 0px;
+}
+
+  
+.updateUserButton
+{
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 0px;
+    transition: .4s;
+    background: #80808052;
+}
+
+.updateUserButton:hover
+{
+    background: #80808096;
+}
+.updateUserButton:focus
+{
+    outline: none;
+}
+
+.updateUserAvatar
+{
+    text-align: center;
+    padding: 20px;
+    margin-top: 18px;
+}
+
+.deleteUserAvatar:focus 
+{
+    outline: none;
+}
+.greyButtonWithBorder,
+.redButtonWithBorder
+{
+    text-decoration: none;
+    outline: none;
+    width: 30%;
+    display: inline-block;
+    padding: 30px 0px;
+    margin: 10px 20px;
+    position: relative;
+    color: black;
+    background: #80808052;
+    font-weight: 300;
+    letter-spacing: 2px;
+    transition: 0.4s;
+    border-radius: 5px;
+ }
+
+ #updateAvatarButton
+{
+    width: 75%;
+    padding: 20px 0px;
+    border: 0px;
+}
+
+.redButtonWithBorder:before,
+.redButtonWithBorder:after,
+.greyButtonWithBorder:before,
+.greyButtonWithBorder:after {
+content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    box-sizing: border-box;
+
+}
+
+.redButtonWithBorder:before{
+    bottom: 0;
+    left: 0;
+    border-left: 2px solid #ff00007a;
+    border-top: 2px solid #ff00007a;
+    transition: 0s ease opacity .8s, .2s ease width .4s, .2s ease height .6s;
+  }
+  .greyButtonWithBorder:before{
+    bottom: 0;
+    left: 0;
+    border-left: 2px solid #7d7d7da6;
+    border-top: 2px solid #7d7d7da6;
+    transition: 0s ease opacity .8s, .2s ease width .4s, .2s ease height .6s;
+  }
+  .redButtonWithBorder:after{
+    top: 0;
+    right: 0;
+    border-right: 2px solid #ff00007a;
+    border-bottom: 2px solid #ff00007a;
+    transition: 0s ease opacity .4s, .2s ease width , .2s ease height .2s;
+  }
+  .greyButtonWithBorder:after {
+    top: 0;
+    right: 0;
+    border-right: 2px solid #7d7d7da6;
+    border-bottom: 2px solid #7d7d7da6;
+    transition: 0s ease opacity .4s, .2s ease width , .2s ease height .2s;
+  }
+
+  .redButtonWithBorder:hover:before,
+  .redButtonWithBorder:hover:after,
+  .greyButtonWithBorder:hover:before,
+  .greyButtonWithBorder:hover:after {
+    height: 100%;
+    width: 100%;
+    opacity: 1;
+
+}
+
+    .redButtonWithBorder:hover:before,
+    .greyButtonWithBorder:hover:before
+        {
+            transition: 0s ease opacity 0s, .2s ease height, .2s ease width .2s;
+
+        }
+    .redButtonWithBorder:hover:after,
+    .greyButtonWithBorder:hover:after
+        {
+            transition: 0s ease opacity .4s, .2s ease height .4s , .2s ease width .6s;
+
+        }
+
+.redButtonWithBorder:hover,
+.greyButtonWithBorder:hover
+{
+    background: #80808096;
+}
+.greyButtonWithBorder:focus
+{
+    outline: none;
+}
+
+.errorText
+{
+    color: red;
+    text-align: center;
+}
+
+.redError,
+.redError:focus
+{
+    border: 1px solid red;
 }

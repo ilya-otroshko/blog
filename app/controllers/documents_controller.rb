@@ -14,7 +14,6 @@ class DocumentsController < ApplicationController
 
   # GET /documents/new
   def new
-
     @document = Document.new
   end
 
@@ -70,6 +69,7 @@ class DocumentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def document_params
-      params.require(:document).permit(:documentable_id, :documentable_type, :path, :path_cache,:remove_path, :remote_path_url)
+	  params.require(:document).permit(:documentable_id, :documentable_type, :path, 
+		:path_cache,:remove_path, :remote_path_url)
     end
 end

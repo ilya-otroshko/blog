@@ -2,41 +2,48 @@ class PostsController < ApplicationController
     before_action :only_signed_in_user, only: [:edit, :new, :destroy, :update]
     before_action :set_post, only: [ :show, :edit, :update, :destroy ]
 
+    # GET /posts
     def index
         @post = Post.all
     end
 
+    # GET /posts/new
     def new
         @post = current_user.posts.build
         @document = @post.documents.build
     end
 
+    # GET /posts/1
     def show
 
     end 
-    
+
+    # GET /posts/1/edit
     def edit
-         if current_user && current_user.id == @post.user_id 
+        if current_user && current_user.id == @post.user_id 
             
-         else
+        else
             redirect_to posts_path
-         end
+        end
     end 
 
+    # PATCH/PUT /posts/1
     def update
 
         if(@post.update_attributes(post_params))
             redirect_to @post
-       else
+        else
            render :edit
-       end
+        end
     end 
 
+    # DELETE /posts/1
     def destroy
         @post.destroy
         redirect_to posts_path
     end
 
+    # POST /posts
     def create
         @post = current_user.posts.new(post_params)
 

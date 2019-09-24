@@ -8,7 +8,8 @@ $(document).on("click", ".wall", function ( ){
         $( ".userEditForm" ).removeClass("on")
     }
         $( ".userPosts" ).addClass("on");
-        $(".wall").addClass("black");
+        $( ".wall" ).addClass("black");
+        $( ".postImage" ).addClass("imageInWall");
  });
  
  $(document).on("click", ".info", function ( ){ 
@@ -35,9 +36,21 @@ $(document).on("click", ".wall", function ( ){
         $(".userPosts").removeClass("on");
         $(".wall").removeClass("black");
         $(".userInfo").addClass("off");
-        $(".userNav").toggleClass("off")
+        $(".userNav").addClass("off")
 
     }
     $( ".userEditForm" ).addClass("on");
-
+    $( ".updateUserAvatar" ).removeClass("off");
+    $( ".updateUserAvatar" ).removeClass("opacityOut");
+    $( ".updateUserAvatar" ).addClass("opacityIn");
+    $( ".check" ).removeClass("off");
+    $( ".userEdit" ).addClass("off");
  });
+
+ $(document).on("click", ".check", function( ){
+    $(".userNav").removeClass("off")
+    $( ".userEdit" ).removeClass("off");
+    $( ".check" ).addClass("off");
+    $( ".updateUserAvatar" ).addClass("off");
+});
+

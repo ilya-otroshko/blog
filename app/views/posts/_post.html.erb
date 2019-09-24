@@ -1,13 +1,14 @@
 <div class="postsAll">
 
-<p><%= link_to post.user.login, user_path(post.user) %></p>    
+<%= link_to post.user.login, user_path(post.user) %>   
+     <h3><%= post.title %></h3>
 
-         <% post.documents.each do |document| %>
+     <div class="postImage">
+       <% post.documents.each do |document| %>
     <%= image_tag(document.path.large.url, alt: 'Image')%>
     <% end %>
-
-
-    <h3><%= post.title %></h3>
+     </div>
+   
     <p><%= post.body %></p>
-    <%= link_to "Read more..", post_path(post), :class => 'btn btn-outline-primary'%>
+    <%= link_to "Read more..", post_path(post)%>
     </div>

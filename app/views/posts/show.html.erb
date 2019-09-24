@@ -3,9 +3,14 @@
 
 <p><%= @post.body%></p>
 
-        <% @post.documents.each do |document| %>
+
+
+  <div class="postImage">
+  <% @post.documents.each do |document| %>
     <%= image_tag(document.path.large.url, alt: 'Image')%>
     <% end %>
+    </div>
+        
 
 
 <div data-object-id="<%= @post.id %>" data-object-type="Post">
