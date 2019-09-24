@@ -169,6 +169,10 @@ h1
         font-size: 21px;
         color: #80808096; 
         transition: .4s;
+        i
+        {
+            margin-right: 5px;
+        }
     }
     .wall:hover, 
     .info:hover
@@ -200,38 +204,18 @@ h1
 {
     border: 0px;
 }
-
-  
-.updateUserButton
-{
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 0px;
-    transition: .4s;
-    background: #80808052;
-}
-
-.updateUserButton:hover
-{
-    background: #80808096;
-}
-.updateUserButton:focus
-{
-    outline: none;
-}
-
 .updateUserAvatar
 {
     text-align: center;
     padding: 20px;
-    margin-top: 18px;
+    margin-top: 30px;
 }
 
 .deleteUserAvatar:focus 
 {
     outline: none;
 }
+
 .greyButtonWithBorder,
 .redButtonWithBorder
 {
@@ -239,21 +223,29 @@ h1
     outline: none;
     width: 30%;
     display: inline-block;
-    padding: 30px 0px;
+    padding: 10px 0px;
     margin: 10px 20px;
     position: relative;
     color: black;
     background: #80808052;
     font-weight: 300;
-    letter-spacing: 2px;
     transition: 0.4s;
     border-radius: 5px;
+    font-size: 16px;
  }
 
+ .updateUserButton
+{
+    width: 100%;
+    padding: 10px;
+    border: 0px;
+    margin: 0;
+    margin-top: 10px;
+}
  #updateAvatarButton
 {
     width: 75%;
-    padding: 20px 0px;
+    padding: 10px 0px;
     border: 0px;
 }
 
@@ -267,7 +259,6 @@ content: "";
     height: 0;
     opacity: 0;
     box-sizing: border-box;
-
 }
 
 .redButtonWithBorder:before{
@@ -325,7 +316,7 @@ content: "";
 .redButtonWithBorder:hover,
 .greyButtonWithBorder:hover
 {
-    background: #80808096;
+    background: white;
 }
 .greyButtonWithBorder:focus
 {

@@ -1,9 +1,31 @@
 // Place all the styles related to the Posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@keyframes roll
+{
+    0% {
+        transform: rotate(0);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+.fa-spinner
+    {
+        animation: roll .6s infinite;
+        color: #757575;
+        font-size: 22px;
+        margin-top: 20px;
+        margin-right: 10px;
+    }
 .postsAll
 {
+    padding: 10px;
     margin:50px;
+    border: 1px solid #80808096;
+    box-shadow: 0 0 0 0.2rem rgba(82, 83, 84, 0.19);
+    
     h3{
         text-align: center; 
         margin: 15px 0px;
@@ -11,62 +33,7 @@
     p{
         margin-top: 20px;
     }
-        a,
-        a:visited,
-        a:hover,
-        a:focus
-        {
-            color: #7d7d7da6;
-            background: white;
-            text-decoration: none;
-            position: relative;
-            transition: 0.4s;
-            border-radius: 5px;
-            padding: 10px;
-            margin-left: 30px;
-            margin-bottom: 10px;
-        }
-        a:before,
-        a:after{
-            content: "";
-            position: absolute;
-            width: 0;
-            height: 0;
-            opacity: 0;
-            box-sizing: border-box;
-        }
-        a:before{
-            bottom: 0;
-            left: 0;
-            border-left: 2px solid #7d7d7da6;
-            border-top: 2px solid #7d7d7da6;
-            transition: 0s ease opacity .8s, .2s ease width .4s, .2s ease height .6s;
-        }
-        a:after{
-            top: 0;
-            right: 0;
-            border-right: 2px solid #7d7d7da6;
-            border-bottom: 2px solid #7d7d7da6;
-            transition: 0s ease opacity .4s, .2s ease width , .2s ease height .2s;
-        }
-        a:hover:before,
-        a:hover:after {
-            height: 100%;
-            width: 100%;
-            opacity: 1;
-
-        }
-        a:hover:before{
-                transition: 0s ease opacity 0s, .2s ease height, .2s ease width .2s;
     
-            }
-        a:hover:after{
-                transition: 0s ease opacity .4s, .2s ease height .4s , .2s ease width .6s;
-    
-            }
-            a:hover{
-                color: black;
-            }     
 }
 
 #newPost a
@@ -83,25 +50,6 @@
        color: black;
        background: white;
     }
-
-    #selectImage
-    {
-     
-    padding: 5px 10px;
-    background: #00C7FF;
-    color: white;
-    border: 1px solid #00C7FF;
-    transition: .5s;
-    border-radius: 5px;
-    margin-top: 20px;
-    }
-    #selectImage:hover
-    {
-    color: #00C7FF;
-    background: white;
-    }
-
-
 
 .postImage
 {
@@ -129,9 +77,42 @@
 }
 
 #uploadImageForPost,
-#uploadImageForPost:active
+#uploadImageForPost:active,
+.createNewPost,
+.addComment,
+#selectImage
 {
     border: 0px;
     outline: none;
-    padding: 20px;
+    padding: 10px;
+    margin: 0!important;
+    margin-top: 10px!important;
+}
+.createNewPost,
+.addComment
+{
+    float: right;
+}
+
+#uploadImageForPost,
+#selectImage    
+{
+    float: left;
+}
+.postSetting
+{
+    width: fit-content!important;
+    padding: 10px!important;
+    text-decoration: none!important;
+    color: black!important;
+}
+
+textarea.form-control {
+    height: calc(1.5em + .75rem + 2px);
+}
+
+.postSettingBlock,
+.like
+{
+    width: 100%;
 }

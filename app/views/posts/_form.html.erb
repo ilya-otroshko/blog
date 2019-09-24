@@ -23,17 +23,16 @@
     Image<br>
    
   </p>
-   <div>
+   <div style="text-align:end">
   <%= f.fields_for :path do |ff| %>
+
     <%= ff.button("Select Image", {type: "button", onclick: "document.getElementById('uploadPostImage').click()", 
     id: "uploadImageForPost", class: "greyButtonWithBorder"}) %>
+      <i class="fas fa-spinner off"></i>
       <%= ff.file_field :path, multiple: true, id: "uploadPostImage", style: "display:none", name: "documents[]" %>
 
   <% end %>
- </div>
-
-  <div class="actions">
-    <%= f.submit %>
+    		<button type="submit" class="createNewPost greyButtonWithBorder">Create</button>
   </div>
 
     <% end %>
