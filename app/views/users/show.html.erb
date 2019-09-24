@@ -1,4 +1,8 @@
 
+<%= form_with(model: @user) do |form| %>
+
+
+
 <div class="userAvatar">
 <%= image_tag(@user.image.thumb.url, alt: 'Image') if @user.image?%>
 
@@ -7,12 +11,19 @@
   <p class="info black"><i class="far fa-id-card"></i> Info</p>
   </div>
 
+ <div class="field updateUserAvatar off">
+
+  <%= form.button("Select Avatar", {type: "button", onclick: "document.getElementById('updateAvatar').click()", id: "updateAvatarButton", class: "greyButtonWithBorder"}) %>
+    <%= form.file_field(:image, { id: "updateAvatar", style: "display:none"}) %>
+  
+  </div>
 
 <% if current_user == @user %>
 
 <div class="userUpdate">
-<%= link_to 'Edit', edit_user_path(current_user) %> 
-<%= link_to 'Destroy', current_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<p class="info black greyButtonWithBorder off check"><i class="far fa-id-card"></i> Info</p>
+<button type="button" class="userEdit greyButtonWithBorder" data-user-edit-id= <%= current_user.id %>>Edit</button>
+<%= link_to 'Destroy', current_user, method: :delete, data: { confirm: 'Are you sure?' }, class: "redButtonWithBorder" %></td>
 </div>
 
 <% end %>
@@ -20,7 +31,7 @@
 </div>
 
 <div class="userPosts">
-<%= render @user.posts %>
+	<%= render @user.posts %>
 </div>
 
 <div class="userInfo">
@@ -30,10 +41,43 @@
   <strong>Login:</strong>
   <%= @user.login %>
 </p>
+<p>
+  <strong>Email:</strong>
+  <%= @user.email%>
+</p>
 
 </div>
 
 
+<div class="userEditForm">
 
 
+  <div class="errorText"></div>
 
+		<div class="field">
+    		<%= form.label :login %>
+    		<%= form.text_field :login, :placeholder => "Login", :class => 'form-control' %>
+  		</div>
+
+  		<div class="field">
+    		<%= form.label :email %>
+   			<%= form.text_field :email, :placeholder => "Email", :class => 'form-control' %>
+  		</div>
+
+  		<div class="field">
+    		<%= form.label :password %>
+    		<%= form.password_field :password, :placeholder => "Password", :class => 'form-control passwordError' %>
+  		</div>
+
+  		<div class="field">
+    		<%= form.label :password_confirmation %>
+    		<%= form.password_field :password_confirmation, :placeholder => "Confirm password", :class => 'form-control passwordError' %>
+  		</div>
+
+     	<div class="actions">
+    		<%= form.submit "Update", :class => "updateUserButton"%>
+  		</div>
+</div>
+
+
+<% end %>

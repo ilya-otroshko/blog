@@ -4,6 +4,69 @@
 .postsAll
 {
     margin:50px;
+    h3{
+        text-align: center; 
+        margin: 15px 0px;
+    }
+    p{
+        margin-top: 20px;
+    }
+        a,
+        a:visited,
+        a:hover,
+        a:focus
+        {
+            color: #7d7d7da6;
+            background: white;
+            text-decoration: none;
+            position: relative;
+            transition: 0.4s;
+            border-radius: 5px;
+            padding: 10px;
+            margin-left: 30px;
+            margin-bottom: 10px;
+        }
+        a:before,
+        a:after{
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+            opacity: 0;
+            box-sizing: border-box;
+        }
+        a:before{
+            bottom: 0;
+            left: 0;
+            border-left: 2px solid #7d7d7da6;
+            border-top: 2px solid #7d7d7da6;
+            transition: 0s ease opacity .8s, .2s ease width .4s, .2s ease height .6s;
+        }
+        a:after{
+            top: 0;
+            right: 0;
+            border-right: 2px solid #7d7d7da6;
+            border-bottom: 2px solid #7d7d7da6;
+            transition: 0s ease opacity .4s, .2s ease width , .2s ease height .2s;
+        }
+        a:hover:before,
+        a:hover:after {
+            height: 100%;
+            width: 100%;
+            opacity: 1;
+
+        }
+        a:hover:before{
+                transition: 0s ease opacity 0s, .2s ease height, .2s ease width .2s;
+    
+            }
+        a:hover:after{
+                transition: 0s ease opacity .4s, .2s ease height .4s , .2s ease width .6s;
+    
+            }
+            a:hover{
+                color: black;
+            }     
 }
 
 #newPost a
@@ -37,3 +100,38 @@
     color: #00C7FF;
     background: white;
     }
+
+
+
+.postImage
+{
+    display: flex;
+    justify-content: space-around;
+    padding: 0px;
+    width: 100%;
+}
+
+.imageInWall
+{
+    display: block;
+    img
+    {
+        height: 170px;
+        width: 250px;
+        margin: 10px;
+    }
+}
+
+.addNewPost
+{
+    width: 60%;
+    margin: 0 auto;;
+}
+
+#uploadImageForPost,
+#uploadImageForPost:active
+{
+    border: 0px;
+    outline: none;
+    padding: 20px;
+}
