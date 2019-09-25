@@ -1,6 +1,9 @@
 {
   "name": "blog",
   "private": true,
+  "scripts": {
+    "start": "node app"
+  },
   "dependencies": {
     "@rails/actioncable": "^6.0.0-alpha",
     "@rails/activestorage": "^6.0.0-alpha",

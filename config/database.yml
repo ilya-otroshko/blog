@@ -1,19 +1,22 @@
-default: &default
+development:
   adapter: mysql2
   encoding: utf8
   username: ninja
   password: 123
   host: 127.0.0.1
   port: 3306
-
-development:
-  <<: *default
   database: dev_blog
 
 test:
-  <<: *default
-  database: test_blog
+  adapter: mysql2
+  encoding: utf8
+  username: ninja
+  password: 123
+  host: 127.0.0.1
+  port: 3306
+  database: dev_blog
 
 production:
-  <<: *default
-  database: production_blog
+  adapter: postgresql
+  encoding: unicode
+  database: blog

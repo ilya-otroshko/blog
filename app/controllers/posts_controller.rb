@@ -29,12 +29,13 @@ class PostsController < ApplicationController
 
     # PATCH/PUT /posts/1
     def update
-
-        if(@post.update_attributes(post_params))
-            redirect_to @post
-        else
-           render :edit
-        end
+        respond_to do |format|
+            if @post.update(post_params)
+              format.html { redirect_to @post}
+            else
+              format.js {}
+            end
+          end
     end 
 
     # DELETE /posts/1

@@ -1,4 +1,2 @@
-console.log(`<%= render @comment %>`)
-
 $('[data-comment-id="<%= @commentable%>"].commentList').append('<%= escape_javascript(render @comment) %>');
-$(".clearInput").val('');  
+$(".clearInput").val(''); 
