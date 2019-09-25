@@ -41,8 +41,6 @@ $(document).on("click", ".wall", function ( ){
     }
     $( ".userEditForm" ).addClass("on");
     $( ".updateUserAvatar" ).removeClass("off");
-    $( ".updateUserAvatar" ).removeClass("opacityOut");
-    $( ".updateUserAvatar" ).addClass("opacityIn");
     $( ".check" ).removeClass("off");
     $( ".userEdit" ).addClass("off");
  });

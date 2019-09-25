@@ -13,7 +13,8 @@
 
  <div class="field updateUserAvatar off">
 
-  <%= form.button("Select Avatar", {type: "button", onclick: "document.getElementById('updateAvatar').click()", id: "updateAvatarButton", class: "greyButtonWithBorder"}) %>
+  <%= form.button("Select Avatar", {type: "button", onclick: "document.getElementById('updateAvatar').click()", 
+  id: "updateAvatarButton", class: "greyButtonWithBorder"}) %>
     <%= form.file_field(:image, { id: "updateAvatar", style: "display:none"}) %>
   
   </div>
@@ -48,7 +49,6 @@
 
 </div>
 
-
 <div class="userEditForm">
 
 
@@ -75,7 +75,7 @@
   		</div>
 
      	<div class="actions">
-    		<%= form.submit "Update", :class => "updateUserButton"%>
+    		<button type="submit" class="updateUserButton greyButtonWithBorder">Update</button>
   		</div>
 </div>
 

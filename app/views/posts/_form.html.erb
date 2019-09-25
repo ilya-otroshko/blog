@@ -1,4 +1,4 @@
-<%= form_for @post do |f| %>
+<%= form_with(model: @post) do |f| %>
     <% if @post.errors.any? %>
         <div class="alert alert-danger">
         <h5><%= t('common.errors')%></h5>
@@ -23,17 +23,21 @@
     Image<br>
    
   </p>
-   <div>
+   <div style="text-align:end">
   <%= f.fields_for :path do |ff| %>
+
     <%= ff.button("Select Image", {type: "button", onclick: "document.getElementById('uploadPostImage').click()", 
     id: "uploadImageForPost", class: "greyButtonWithBorder"}) %>
+      <i class="fas fa-spinner off"></i>
       <%= ff.file_field :path, multiple: true, id: "uploadPostImage", style: "display:none", name: "documents[]" %>
 
   <% end %>
- </div>
+  
+    <button type="submit" class="createNewPost greyButtonWithBorder">Send</button>
 
-  <div class="actions">
-    <%= f.submit %>
   </div>
 
     <% end %>
+
+
+    

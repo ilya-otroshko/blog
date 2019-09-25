@@ -12,27 +12,31 @@
 
 ActiveRecord::Schema.define(version: 2019_09_20_095311) do
 
-  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
     t.text "body"
     t.integer "commentable_id"
     t.string "commentable_type"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.json "documents"
+    t.string "document"
     t.json "image"
   end
 
-  create_table "documents", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "documents", force: :cascade do |t|
     t.text "path"
     t.integer "documentable_id"
     t.string "documentable_type"
-    t.integer "post_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "image"
   end
 
-  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "likes", force: :cascade do |t|
     t.integer "count"
     t.integer "liketable_id"
     t.string "liketable_type"
@@ -41,22 +45,28 @@ ActiveRecord::Schema.define(version: 2019_09_20_095311) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "body"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.json "documents"
     t.json "images"
     t.string "image"
+    t.string "file"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "login"
     t.string "email"
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.json "documents"
+    t.json "avatars"
+    t.string "avatar"
+    t.string "document"
     t.json "image"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
