@@ -1,7 +1,14 @@
 <div class="postsAll">
-    <p>author: <%= post.user.login %></p>
-    <%= image_tag(post.image.large.url, alt: 'Image') if post.image?%>
-    <h3><%= post.title %></h3>
+
+<%= link_to post.user.login, user_path(post.user),:class => 'postSetting greyButtonWithBorder' %>   
+     <h3><%= post.title %></h3>
+
+     <div class="postImage">
+       <% post.documents.each do |document| %>
+    <%= image_tag(document.path.large.url, alt: 'Image')%>
+    <% end %>
+     </div>
+   
     <p><%= post.body %></p>
-    <%= link_to "Read more..", post_path(post), :class => 'btn btn-outline-primary'%>
+    <%= link_to "Read more..", post_path(post), :class => 'postSetting greyButtonWithBorder'%>
     </div>

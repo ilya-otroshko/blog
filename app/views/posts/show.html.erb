@@ -1,21 +1,34 @@
-<p id="notice"><%= notice %></p>
 <h1><%= @post.title%></h1>
 
 <p><%= @post.body%></p>
 
-  <%= image_tag(@post.image.large.url, alt: 'Image') if @post.image?%>
 
-<div data-object-id="<%= @post.id %>" data-object-type="Post">
-<%= render 'likes/likes', object: @post%>
+
+  <div class="postImage">
+  <% @post.documents.each do |document| %>
+    <%= image_tag(document.path.large.url, alt: 'Image')%>
+    <% end %>
+    </div>
+        
+
+<hr>
+<div data-object-id="<%= @post.id %>" data-object-type="Post" class="likeFor">
+
+  <% if current_user && current_user.id == @post.user_id %>
+  <div class="postSettingBlock"> 
+    <%= link_to "Edit", edit_post_path(@post), :class => 'postSetting greyButtonWithBorder'%>
+    <%= link_to "Remove", post_path(@post), method: :delete, data:{confirm: "want to remove post"}, 
+    :class => 'postSetting redButtonWithBorder'%>
+  </div>
+  <% end %>
+
+  <div class="like">
+    <%= render 'likes/likes', object: @post%>
+  </div>
 </div>
 
-<% if current_user && current_user.id == @post.user_id %>
-<hr>
-<%= link_to "Edit", edit_post_path(@post), :class => 'btn btn-warning'%>
-<%= link_to "Remove", post_path(@post), method: :delete, data:{confirm: "want to remove article"}, :class => 'btn btn-danger'%>
-<hr>  
-<% end %>
 
+<hr> 
 <small>Submitted <%= time_ago_in_words(@post.created_at) %> ago</small>
 
 <ul class="commentList" data-comment-id=<%=@post.id%>>
@@ -28,13 +41,16 @@
 
 <%= f.hidden_field :commentable_id , :value => @post.id%>
 <%= f.hidden_field :commentable_type, :value => @post.class.to_s%>
-<%= f.text_area :body, placeholder: "Add a comment", class: "clearInput"%>
-<%= f.submit "Add Comment", class: "addComment" %>
-
-    <%= f.button("Select Image", {type: "button", onclick: "document.getElementById('getFilePost').click()", id: "selectImage"}) %>
+<%= f.text_area :body, placeholder: "Write text", class: "clearInput form-control"%>
+<div style="text-align:right">
+    <%= f.button("Select Image", {type: "button", onclick: "document.getElementById('getFilePost').click()", 
+    id: "selectImage", class: "greyButtonWithBorder"}) %>
     <%= f.file_field(:image, { id: "getFilePost", style: "display:none"}) %>
     <%= f.hidden_field(:image_cache) %>
-    <%= f.text_field(:remote_image_url) %>
+    <i class="fas fa-spinner off"></i>
+    <button type="submit" class="addComment greyButtonWithBorder">Add Comment</button>
+</div>
+
 
 <% end %>
 <% end %>

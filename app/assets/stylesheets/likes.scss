@@ -4,15 +4,18 @@
 
 .like 
 {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    margin-right: 10px;
     #likeUp
     {
         color: green;
     }
     #likeDown
     {
-        color: red;
+        color: red; 
     }
-    width: fit-content;
     button, span
     {
         margin: 0;
@@ -20,10 +23,16 @@
         background: none;
         border: none;
         outline: none;
+        margin-left: 15px;
         cursor: pointer;
         i
         {
             font-size: 20px;
         }
     }
+}
+
+.likeFor
+{
+    display: flex;
 }
