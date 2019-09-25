@@ -15,12 +15,48 @@ window.onload = () => {
     };
 });
 
-$(document).on("click", ".showCommentForm", function ( e ){ 
-    e.preventDefault() 
+$(document).on("click", ".showCommentForm", function (  ){ 
     $( this ).parent().find( ".show_comment_form" ).toggleClass("on");
-
  });
+
+ $(document).on("click", ".replyComment", function (  ){ 
+        $( ".show_comment_form" ).removeClass("on");
+        $( this ).parent().parent().parent().find( ".showReply").removeClass("off");
+ });
+ $(document).on("click", ".addComment", function (  ){ 
+    console.log($( this ).parent().parent().find( ".showThisImage").removeClass("off"));
+});
  
+ $(document).on("click", ".showReply", function (  ){ 
+    $( this ).parent().next().removeClass("off");
+    $( this ).next().removeClass("off");
+    $( this ).addClass("off");
+});
+
+
+$(document).on("click", ".hideReply", function (  ){ 
+    $( this ).parent().next().addClass("off");
+    $( this ).prev().removeClass("off");
+    $( this ).addClass("off");
+
+});
+
+ 
+$(document).on("click", ".showThisImage", function (  ){ 
+    $( this ).parent().find( ".thisImage" ).removeClass("off");
+    $( this ).next().removeClass("off");
+    $( this ).addClass("off");
+});
+
+
+$(document).on("click", ".hideThisImage", function (  ){ 
+    $( this ).parent().find( ".thisImage" ).addClass("off");
+    $( this ).prev().removeClass("off");
+    $( this ).addClass("off");
+
+});
+
+
  $(document).on("dblclick", ".textComment", function(){
 $('.ajax').html($('.ajax input').val());
 $('.ajax').removeClass('ajax');

@@ -1,0 +1,16 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: blog
+
+# test:
+#   adapter: mysql2
+#   encoding: utf8
+#   username: ninja
+#   password: 123
+#   database: dev_blog
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: blog

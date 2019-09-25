@@ -1,15 +1,12 @@
 <h1><%= @post.title%></h1>
 
-<p><%= @post.body%></p>
-
-
-
   <div class="postImage">
   <% @post.documents.each do |document| %>
     <%= image_tag(document.path.large.url, alt: 'Image')%>
     <% end %>
     </div>
         
+<p><%= @post.body%></p>
 
 <hr>
 <div data-object-id="<%= @post.id %>" data-object-type="Post" class="likeFor">
@@ -26,10 +23,8 @@
     <%= render 'likes/likes', object: @post%>
   </div>
 </div>
-
-
 <hr> 
-<small>Submitted <%= time_ago_in_words(@post.created_at) %> ago</small>
+
 
 <ul class="commentList" data-comment-id=<%=@post.id%>>
   <%= render(partial: 'comments/comment', collection: @post.comments) %>
