@@ -8,6 +8,7 @@
     <%= stylesheet_link_tag 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css'%>
     <%= stylesheet_link_tag 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'%>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Libre+Baskerville&display=swap', media: 'all' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -15,6 +16,7 @@
   <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
   <h5 class="my-0 mr-md-auto font-weight-bold">Ninja Team</h5>
   <nav >
+<<<<<<< HEAD
 <%= link_to "Home", home_path, :class => "headerLink", :id => "home" %>   
   <% if current_user %>
   <%= link_to current_user.login, user_path(current_user), :class => "headerLink" %>  
@@ -23,6 +25,18 @@
     <% else %> 
     <%= link_to "Log in", login_path, :class => "headerLink" %>
     <%= link_to "Registration", signup_path, :class => "headerLink" %> 
+=======
+
+  <%= link_to "Home", home_path, :class => "headerLink", :id => "home" %> 
+
+    <% if current_user %>
+       <%= link_to "Create new post", new_post_path, :class => "headerLink" %>
+       <%= link_to current_user.login, user_path(current_user), :class => "headerLink" %>  
+       <%= link_to "Log Out", logout_path, :class => "headerLink" %> 
+    <% else %> 
+       <%= link_to "Log in", login_path, :class => "headerLink" %>
+       <%= link_to "Registration", signup_path, :class => "headerLink" %> 
+>>>>>>> a3dff12ce750d0002ed55ea9d5115cf7835c1e92
     <% end %>
      
     

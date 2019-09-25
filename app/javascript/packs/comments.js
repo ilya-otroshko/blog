@@ -1,5 +1,4 @@
 window.onload = () => {
-
       
     $(document).on('click', ".deleteAction", function(){
     let current_comment = $(this).parents('li')[0]
@@ -23,7 +22,7 @@ $(document).on("click", ".showCommentForm", function ( e ){
  });
  
  $(document).on("dblclick", ".textComment", function(){
-    $('.ajax').html($('.ajax input').val());
+$('.ajax').html($('.ajax input').val());
 $('.ajax').removeClass('ajax');
 $(this).addClass('ajax');
 $(this).html('<input id="editbox" type="text" value="' + $(this).text() + '" />');

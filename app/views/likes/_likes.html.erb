@@ -1,5 +1,11 @@
-<div class="like">
-<p id="count"><%= object.likes.count%></p>
+
+<p class="likeCount"><%= object.likes.count%></p>
+
+<% if !current_user%>
+    <p><i class="far fa-thumbs-up" style="color: green; font-size: 20px; margin-left: 15px;"></i><p>
+<% end %>
+
+
 
 
 <% if current_user && current_user.likes.find_by_liketable_id(object.id) == nil %>
@@ -18,4 +24,3 @@
 <% end %>
 
 <% end %>
-</div>
