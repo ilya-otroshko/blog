@@ -17,12 +17,17 @@ window.onload = () => {
 
 $(document).on("click", ".showCommentForm", function (  ){ 
     $( this ).parent().find( ".show_comment_form" ).toggleClass("on");
+    $( ".commentForPost" ).toggleClass("off");
  });
 
  $(document).on("click", ".replyComment", function (  ){ 
         $( ".show_comment_form" ).removeClass("on");
         $( this ).parent().parent().parent().find( ".showReply").removeClass("off");
+        $( ".commentForPost" ).toggleClass("off");
  });
+
+
+ 
  $(document).on("click", ".addComment", function (  ){ 
     console.log($( this ).parent().parent().find( ".showThisImage").removeClass("off"));
 });

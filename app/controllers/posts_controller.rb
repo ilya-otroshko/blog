@@ -52,8 +52,6 @@ class PostsController < ApplicationController
             if params[:documents]
                 params[:documents].each do |document|
                   @post.documents.create(path: document, documentable_id: @post.id, documentable_type: "Post")
-                  p document
-                  p @post.id
                 end
             end
              redirect_to @post

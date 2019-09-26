@@ -16,11 +16,6 @@ User.create(
 
 10.times do
 
-<<<<<<< HEAD
-    User.create(login: Faker::Internet.username, email: Faker::Internet.email, password: "123456", password_confirmation: "123456",  image:Faker::Avatar.image)
-
-    # Post.create(title: Faker::Food.dish, body: Faker::Lorem.paragraph(sentence_count: 15, supplemental: true), user_id: rand(User.first.id...User.last.id),  images:[Rails.root.join("public/uploads/user/image/avatar.png").open])
-=======
     User.create(
         login: Faker::Internet.username, 
         email: Faker::Internet.email, 
@@ -32,7 +27,6 @@ User.create(
         title: Faker::Food.dish, 
         body: Faker::Lorem.paragraph(sentence_count: 15, supplemental: true), 
         user_id: rand(User.first.id...User.last.id))
->>>>>>> a3dff12ce750d0002ed55ea9d5115cf7835c1e92
 
 rand(1...4).times do
     Document.create(
