@@ -1,6 +1,6 @@
 development:
   adapter: postgresql
-  encoding: unicode
+  encoding: utf8
   database: blog
   username: ninja
   password: 123
@@ -16,7 +16,7 @@ development:
 production:
   adapter: postgresql
   database: blog
-  host: localhost
   encoding: utf8
-  pool: 15
+  pool: 5
+  username: ninja
   password:
