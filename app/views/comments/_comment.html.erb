@@ -17,8 +17,6 @@
 	
 <% if current_user %>
 
-
-
   <%= form_with( model: Comment.new(commentable_type: "Comment"), class:"commentForComment"	)  do |f| %>
   
   <% if current_user && current_user.id == comment.user_id%>
@@ -26,11 +24,6 @@
       <span class="deleteAction"> Delete</span>
       <% end %>
       <span class="showCommentForm"> Reply</span>
-
-
-		  	
-
-
 
 	  <% if comment.comments != [ ] %>
 		  		<span class="showReply"> Show reply <i class="fas fa-angle-down"></i></span>
