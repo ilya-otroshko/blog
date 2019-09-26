@@ -1,9 +1,6 @@
 {
   "name": "blog",
   "private": true,
-  "scripts": {
-    "start": "node app"
-  },
   "dependencies": {
     "@rails/actioncable": "^6.0.0-alpha",
     "@rails/activestorage": "^6.0.0-alpha",
@@ -13,8 +10,9 @@
     "turbolinks": "^5.2.0"
   },
   "engines": {
+    "yarn": "^1.17.3",
     "node": "^12.10.0",
-    "npm": "6.10.3"
+    "npm": "^6.10.3"
   },
   "version": "0.1.0",
   "devDependencies": {
