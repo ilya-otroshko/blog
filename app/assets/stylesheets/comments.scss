@@ -1,0 +1,136 @@
+// Place all the styles related to the comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.deleteAction
+{
+    color: #e04a4a;
+    cursor: pointer;
+    margin: 15px;
+    transition: .4s;
+}
+.deleteAction:hover
+{
+    color:#ff0000;
+}
+
+.commentForPost
+{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 60%;
+    padding-left: 20px;
+    animation: fade-in .5s linear;
+    input, textarea
+    {
+    width: 100%;
+    text-align: center;
+    }
+}
+
+.commentList
+{
+    list-style: none;
+    padding-left: 20px;
+
+}
+.textComment
+{
+        padding: 10px;
+        float: left;
+}
+.commentForm
+{
+    display: flex;
+    width: 60%;
+    flex-direction: column;
+    margin: 0 auto;
+    margin-top: 20px;
+    li 
+    {
+        width: 100%;
+    }
+}
+.commentForComment
+{
+    margin-top: -40px;  
+    width: 90%;
+    textarea
+    {
+        width: 100%;
+        margin-top: 16px;
+    }
+}
+.show_comment_form
+{
+    display: none;
+    width: 110%;
+    animation: fade-in .5s linear;
+    textarea
+    {
+        text-align: center;
+    }
+}
+.showCommentForm,
+.showReply,
+.hideReply,
+.showThisImage,
+.hideThisImage
+{
+    cursor: pointer;
+    color: #7d7d7d;
+    transition: .4s;
+}
+.showReply,
+.hideReply,
+.showThisImage,
+.hideThisImage
+{
+    margin-left: 15px;
+}
+.showCommentForm:hover,
+.showReply:hover,
+.hideReply:hover,
+.showThisImage:hover,
+.hideThisImage:hover
+{
+    color:#353535;  
+}
+.on 
+{
+    display: block!important;
+}
+
+#clearInput
+{
+    border-radius: 5px;
+
+}
+
+#editbox
+{
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid ghostwhite;
+    padding: 8px 10px 8px 10px;
+    margin: -10px -10px -10px -10px;
+    outline: none;
+}
+
+
+.commentInComment
+{
+    animation: fade-in .5s linear;
+}
+
+.thisImage
+{
+    display: flex;
+    justify-content: center;
+    width: 110%;
+    animation: fade-in .5s linear;
+    img{
+        margin: 10px;
+    }
+}

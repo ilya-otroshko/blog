@@ -1,0 +1,23 @@
+
+<p class="likeCount"><%= object.likes.count%></p>
+
+<% if !current_user%>
+    <p><i class="far fa-thumbs-up" style="color: green; font-size: 20px; margin-left: 15px;"></i><p>
+<% end %>
+
+<% if current_user && current_user.likes.find_by_liketable_id(object.id) == nil %>
+
+<%= form_with( model: Like.new) do |f| %>
+<%= f.hidden_field :liketable_id , :value => object.id%>
+<%= f.hidden_field :liketable_type, :value => object.class.to_s%>
+<%= f.hidden_field :count , :value => object.likes.count.to_i + 1%>
+<button type="submit" id="likeUp"><i class="far fa-thumbs-up"></i></button>
+<% end %>
+
+<% else %>
+
+<% if current_user %>
+    <span data-like-id="<%= current_user.likes.find_by_liketable_id(object.id).id%>" id="likeDown"><i class="far fa-thumbs-down"></i></span>
+<% end %>
+
+<% end %>

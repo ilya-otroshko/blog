@@ -1,0 +1,79 @@
+<li class="commentForm" data-comment-id=<%= comment.id %>>
+
+ 	<div class="commentNew">
+		<%= image_tag(comment.user.image.thumb.url,  style: "width:60px;height:50px; margin-right:10px; float:left;", 
+		alt: 'Image') if comment.user.image?%>
+		<p>
+			<strong><%= comment.user.login %></strong> <span> <%= time_ago_in_words(comment.created_at) %> ago</span>
+		</p>
+	
+			<p class="textComment">	<%= comment.body %> </p>	
+</div>
+<div style="margin-top:-15px;" data-object-id="<%= comment.id %>" data-object-type="Comment">
+<div class="like">
+<%= render 'likes/likes', object: comment%>
+</div>
+</div>
+	
+<% if current_user %>
+
+  <%= form_with( model: Comment.new(commentable_type: "Comment"), class:"commentForComment"	)  do |f| %>
+  
+  <% if current_user && current_user.id == comment.user_id%>
+
+      <span class="deleteAction"> Delete</span>
+      <% end %>
+      <span class="showCommentForm"> Reply</span>
+
+	  <% if comment.comments != [ ] %>
+		  		<span class="showReply"> Show reply <i class="fas fa-angle-down"></i></span>
+				<span class="hideReply off"> Hide reply <i class="fas fa-angle-up"></i></span>
+			<% else %>
+				<span class="showReply off"> Show reply <i class="fas fa-angle-down"></i></span>
+				<span class="hideReply off"> Hide reply <i class="fas fa-angle-up"></i></span>
+	  <% end %>
+
+	  <% if comment.image? %>
+		  		<span class="showThisImage"> Show image <i class="fas fa-angle-down"></i></span>
+				<span class="hideThisImage off"> Hide image <i class="fas fa-angle-up"></i></span>
+		<% else %>
+					<span class="showThisImage"> Show image <i class="fas fa-angle-down"></i></span>
+					<span class="hideThisImage off"> Hide image <i class="fas fa-angle-up"></i></span>
+	  <% end %>
+
+		<div class="thisImage off">
+		<% if comment.image? %>
+			<%= image_tag(comment.image.thumb.url, alt: 'Image') %>
+	  <% end %>
+	  </div>
+
+     <%= f.hidden_field :commentable_id , :value => comment.id%>
+     <%= f.hidden_field :commentable_type, :value => comment.class.to_s%>
+
+     <div class="show_comment_form">
+	 <%= f.text_area :body, placeholder: "Write text", class: "clearInput form-control"%>
+      <div class="field">
+	  <%= f.button("Select Image", {type: "button", onclick: "document.getElementById('getFile').click()", 
+    id: "selectImage", class: "greyButtonWithBorder"}) %>
+    <%= f.file_field(:image, { id: "getFile", style: "display:none"}) %>
+    <%= f.hidden_field(:image_cache) %>
+
+    <i class="fas fa-spinner off"></i>
+
+    <button type="submit" class="addComment greyButtonWithBorder replyComment">Reply</button>
+
+
+  </div>
+</div>
+      <% end %>
+
+<% end %>
+	<div class="commentInComment off" data-comment-id=<%=comment.id%>>
+	
+  <ul class="commentList" data-comment-id=<%=comment.id%>>
+      <%= render partial: 'comments/comment', collection: comment.comments %>
+  </ul>
+
+  </div>
+
+</li>

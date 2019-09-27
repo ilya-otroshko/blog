@@ -1,0 +1,122 @@
+// Place all the styles related to the Posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@keyframes roll
+{
+    0% {
+        transform: rotate(0);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+.fa-spinner
+    {
+        animation: roll .6s infinite;
+        color: #757575;
+        font-size: 22px;
+        margin-top: 20px;
+        margin-right: 10px;
+    }
+.postsAll
+{
+    padding: 10px;
+    margin:50px;
+    border: 1px solid #80808096;
+    box-shadow: 0 0 0 0.2rem rgba(82, 83, 84, 0.19);
+    
+    h3{
+        text-align: center; 
+        margin: 15px 0px;
+    }
+    p{
+        margin-top: 20px;
+    }
+    
+}
+
+#newPost a
+    {
+        float: right;
+        font-size: 20px;
+        color: #666;
+        margin: 10px;
+    }
+
+    #newPost a:hover
+    {
+       text-decoration: none;
+       color: black;
+       background: white;
+    }
+
+.postImage
+{
+    display: flex;
+    justify-content: space-around;
+    padding: 0px;
+    width: 100%;
+}
+
+.imageInWall
+{
+    display: block;
+    img
+    {
+        height: 170px;
+        width: 250px;
+        margin: 10px;
+    }
+}
+
+.addNewPost,
+.editMyPost
+{
+    width: 60%;
+    margin: 0 auto;
+    h2{
+        text-align: center;
+    }
+}
+
+#uploadImageForPost,
+#uploadImageForPost:active,
+.createNewPost,
+.addComment,
+#selectImage
+{
+    border: 0px;
+    outline: none;
+    padding: 10px;
+    margin: 0!important;
+    margin-top: 10px!important;
+}
+.createNewPost,
+.addComment
+{
+    float: right;
+}
+
+#uploadImageForPost,
+#selectImage    
+{
+    float: left;
+}
+.postSetting
+{
+    width: fit-content!important;
+    padding: 10px!important;
+    text-decoration: none!important;
+    color: black!important;
+}
+
+textarea.form-control {
+    height: calc(1.5em + .75rem + 2px);
+}
+
+.postSettingBlock,
+.like
+{
+    width: 100%;
+}

@@ -1,0 +1,51 @@
+<h1><%= @post.title%></h1>
+
+  <div class="postImage">
+  <% @post.documents.each do |document| %>
+    <%= image_tag(document.path.large.url, alt: 'Image')%>
+    <% end %>
+    </div>
+        
+<p style="margin-top:20px; padding:20px;"><%= @post.body%></p>
+
+<hr>
+<div data-object-id="<%= @post.id %>" data-object-type="Post" class="likeFor">
+
+  <% if current_user && current_user.id == @post.user_id %>
+  <div class="postSettingBlock"> 
+    <%= link_to "Edit", edit_post_path(@post), :class => 'postSetting greyButtonWithBorder'%>
+    <%= link_to "Remove", post_path(@post), method: :delete, data:{confirm: "want to remove post"}, 
+    :class => 'postSetting redButtonWithBorder'%>
+  </div>
+  <% end %>
+
+  <div class="like">
+    <%= render 'likes/likes', object: @post%>
+  </div>
+</div>
+<hr> 
+
+
+<ul class="commentList" data-comment-id=<%=@post.id%>>
+  <%= render(partial: 'comments/comment', collection: @post.comments) %>
+</ul>
+
+<% if current_user %>
+
+<%= form_with( model: Comment.new(commentable_type: "Post"), class: "commentForPost") do |f| %>
+
+<%= f.hidden_field :commentable_id , :value => @post.id%>
+<%= f.hidden_field :commentable_type, :value => @post.class.to_s%>
+<%= f.text_area :body, placeholder: "Write text", class: "clearInput form-control"%>
+<div style="text-align:right">
+    <%= f.button("Select Image", {type: "button", onclick: "document.getElementById('getFilePost').click()", 
+    id: "selectImage", class: "greyButtonWithBorder"}) %>
+    <%= f.file_field(:image, { id: "getFilePost", style: "display:none"}) %>
+    <%= f.hidden_field(:image_cache) %>
+    <i class="fas fa-spinner off"></i>
+    <button type="submit" class="addComment greyButtonWithBorder">Add Comment</button>
+</div>
+
+
+<% end %>
+<% end %>
