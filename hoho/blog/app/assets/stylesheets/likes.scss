@@ -1,0 +1,38 @@
+// Place all the styles related to the likes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.like 
+{
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    margin-right: 10px;
+    #likeUp
+    {
+        color: green;
+    }
+    #likeDown
+    {
+        color: red; 
+    }
+    button, span
+    {
+        margin: 0;
+        padding: 0;
+        background: none;
+        border: none;
+        outline: none;
+        margin-left: 15px;
+        cursor: pointer;
+        i
+        {
+            font-size: 20px;
+        }
+    }
+}
+
+.likeFor
+{
+    display: flex;
+}

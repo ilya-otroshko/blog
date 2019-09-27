@@ -1,0 +1,43 @@
+<%= form_with(model: @post) do |f| %>
+    <% if @post.errors.any? %>
+        <div class="alert alert-danger">
+        <h5><%= t('common.errors')%></h5>
+        <ul>
+        <% @post.errors.full_messages.each do |msg|%>
+        <li><%= msg%></li>
+        </ul>
+        </div>
+    <% end %>
+    <% end %>
+    <p>
+    Name<br>
+    <%= f.text_field(:title, {:class => 'form-control'}) %>
+    </p>
+
+     <p>
+    Text<br>
+    <%= f.text_area(:body, {:class => 'form-control'}) %>
+    </p>
+
+   <p>
+    Image<br>
+   
+  </p>
+   <div style="text-align:end">
+  <%= f.fields_for :path do |ff| %>
+
+    <%= ff.button("Select Image", {type: "button", onclick: "document.getElementById('uploadPostImage').click()", 
+    id: "uploadImageForPost", class: "greyButtonWithBorder"}) %>
+      <i class="fas fa-spinner off"></i>
+      <%= ff.file_field :path, multiple: true, id: "uploadPostImage", style: "display:none", name: "documents[]" %>
+
+  <% end %>
+  
+    <button type="submit" class="createNewPost greyButtonWithBorder">Send</button>
+
+  </div>
+
+    <% end %>
+
+
+    
