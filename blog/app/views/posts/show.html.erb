@@ -3,7 +3,7 @@
 
 <p><%= @post.body%></p>
 
-  <%= image_tag(@post.image.large.url, alt: 'Image') if @post.image?%>
+
 
 <div data-object-id="<%= @post.id %>" data-object-type="Post">
 <%= render 'likes/likes', object: @post%>
