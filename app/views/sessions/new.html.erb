@@ -2,6 +2,11 @@
 
 <h1>Log in</h1>
 
+<% if @auth_hash %>
+  <h3><%= @auth_hash.info %></h3>
+<% end %>
+
+
 <%= form_with(url:"sessions", :class => 'form-signin') do |form| %>
 <div class="field">
     <%= form.label :email %>

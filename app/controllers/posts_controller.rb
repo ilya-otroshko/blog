@@ -61,13 +61,6 @@ class PostsController < ApplicationController
     end
      
     private 
-<<<<<<< HEAD:blog/app/controllers/posts_controller.rb
-    def post_params
-        params.require(:post).permit(:title, :body, :images_cache, images: [])
-    end
-
-=======
->>>>>>> 4c79d09e397fcfaaf90c9eb5f4855965740cc079:app/controllers/posts_controller.rb
     def set_post
         @post = Post.find(params[:id])
     end

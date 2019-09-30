@@ -21,24 +21,24 @@
   
   <% if current_user && current_user.id == comment.user_id%>
 
-      <span class="deleteAction"> Delete</span>
+      <span class="deleteAction"> <i class="far fa-trash-alt"></i></span>
       <% end %>
-      <span class="showCommentForm"> Reply</span>
+      <span class="showCommentForm"> <i class="fas fa-reply"></i></span>
 
 	  <% if comment.comments != [ ] %>
-		  		<span class="showReply"> Show reply <i class="fas fa-angle-down"></i></span>
-				<span class="hideReply off"> Hide reply <i class="fas fa-angle-up"></i></span>
+		  		<span class="showReply"> <i class="far fa-comment-dots"></i> <i class="fas fa-angle-down"></i></span>
+				<span class="hideReply off"> <i class="far fa-comment-dots"></i> <i class="fas fa-angle-up"></i></span>
 			<% else %>
-				<span class="showReply off"> Show reply <i class="fas fa-angle-down"></i></span>
-				<span class="hideReply off"> Hide reply <i class="fas fa-angle-up"></i></span>
+				<span class="showReply off"> <i class="far fa-comment-dots"></i> <i class="fas fa-angle-down"></i></span>
+				<span class="hideReply off"> <i class="far fa-comment-dots"></i> <i class="fas fa-angle-up"></i></span>
 	  <% end %>
 
 	  <% if comment.image? %>
-		  		<span class="showThisImage"> Show image <i class="fas fa-angle-down"></i></span>
-				<span class="hideThisImage off"> Hide image <i class="fas fa-angle-up"></i></span>
+		  		<span class="showThisImage"> <i class="fas fa-images"></i> <i class="fas fa-angle-down"></i></span>
+				<span class="hideThisImage off"> <i class="fas fa-images"></i> <i class="fas fa-angle-up"></i></span>
 		<% else %>
-					<span class="showThisImage"> Show image <i class="fas fa-angle-down"></i></span>
-					<span class="hideThisImage off"> Hide image <i class="fas fa-angle-up"></i></span>
+					<span class="showThisImage"> <i class="fas fa-images"></i> <i class="fas fa-angle-down"></i></span>
+					<span class="hideThisImage off"> <i class="fas fa-images"></i> <i class="fas fa-angle-up"></i></span>
 	  <% end %>
 
 		<div class="thisImage off">

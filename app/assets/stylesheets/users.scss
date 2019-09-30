@@ -242,7 +242,16 @@ h1
     border-radius: 5px;
     font-size: 16px;
  }
-
+ .postSetting,
+ .postSetting:hover,
+ .postSetting:visited
+ {
+    color: black;
+    text-decoration: none;
+    text-align: center;
+    width: fit-content;
+    padding: 10px;
+ }
  .updateUserButton
 {
     width: 100%;

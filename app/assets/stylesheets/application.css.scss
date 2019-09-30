@@ -40,3 +40,92 @@
 .container {
   animation: fade-in .7s linear;
 }
+@media screen and (max-width: 995px) {
+
+   .userAvatar {
+     border: 1px solid lightgrey;
+     margin: 0 auto;
+     margin-bottom: 30px;
+     float: none;
+     width: 100%;
+   }
+ 
+   .userEditForm,
+   .userInfo,
+   .userPosts,
+   .addNewPost,
+   .editMyPost,
+   .commentForPost {
+     margin-top: 30px;
+     width: 100%;
+     margin: 0 auto;
+     float: none;
+     padding: 0;
+   }
+
+   .userPosts .postsAll {
+     margin: 20px 0px;
+   }
+ 
+
+   .updateUserButton {
+     width: 100%;
+   }
+ 
+
+   #uploadImageForPost,
+   .createNewPost {
+     width: 40%;
+   }
+ 
+
+   .commentForm {
+     width: 100%;
+   }
+ }
+ @media screen and (max-width: 770px) {
+
+   .burger {
+     display: block;
+   }
+   nav {
+     display: none;
+   }
+   .postSettingBlock .postSetting {
+     width: 70%;
+     text-align: center;
+   }
+ }
+ @media screen and (max-width: 550px) {
+
+   .replyComment {
+     padding: 19px 0px;
+   }
+ }
+ @media screen and (max-width: 407px) {
+
+   .container {
+     padding: 0;
+   }
+ 
+   .createNewPost {
+     padding: 19px 0px;
+   }
+ 
+   .postImage {
+     flex-direction: column;
+      img {
+     height: 200px;
+     margin: 5px;
+     width: 100%;
+   }
+}
+ 
+   #selectImage,
+   .addComment {
+     width: 40%;
+     padding: 10px;
+   }
+
+ }
+ 

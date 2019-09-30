@@ -14,6 +14,10 @@ window.onload = () => {
         });
     };
 });
+$(document).on('click', ".menu__icon", function () {
+    $(this).parent().toggleClass('menu_state_open');
+  });
+
 
 $(document).on("click", ".showCommentForm", function (  ){ 
     $( this ).parent().find( ".show_comment_form" ).toggleClass("on");

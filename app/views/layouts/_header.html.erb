@@ -1,0 +1,37 @@
+<header>
+
+   <a class="headerLink title" href="/">Ninja Cot</a> 
+    <nav >
+  <a class="headerLink" id="home" href="/">Home</a> 
+<% if current_user %>
+       <a class="headerLink" href="/posts/new">Create new post</a>
+       <a class="headerLink" href="<%= user_path(current_user) %>"><%= current_user.login %></a>  
+       <a class="headerLink" href="/logout">Log Out</a> 
+     <% else %> 
+        <a class="headerLink" href="/login">Log in</a> 
+        <a class="headerLink" href="/signup">Registration</a> 
+      <% end %>
+      
+  </nav>
+    <div class="burger"> 
+  		<div class="menu__icon">
+    		<span></span>
+   	 		<span></span>
+   			<span></span>
+   			<span></span>
+		</div>
+
+				<ul class="mob">
+					<li><a href="/">Home</a></li>
+                    <% if current_user %>
+					<li> <a class="headerLink" href="/posts/new">Create new post</a></li>
+					<li><a class="headerLink" href="<%= user_path(current_user) %>"><%= current_user.login %></a></li>
+					<li><a class="headerLink" href="/logout">Log Out</a> </li>
+                      <% else %> 
+                       <li><a class="headerLink" href="/login">Log in</a> </li>
+                        <li><a class="headerLink" href="/signup">Registration</a> </li>
+                    <% end %>
+				</ul>
+    </div>
+
+  </header>

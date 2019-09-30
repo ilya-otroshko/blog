@@ -2,10 +2,13 @@ class SessionsController < ApplicationController
 
 	# GET /login
 	def new
+		@auth_hash = request.env['omniauth.auth']
 	end
 
 	# POST /sessions
 	def create
+		user = User.find_or_create_from_auth_hash(@auth_hash)
+
     	user = User.find_by_email(params[:email])
     	if user && user.authenticate(params[:password])
     		session[:user_id] = user.id
