@@ -36,3 +36,5 @@ yarn-debug.log*
 /.idea
 .ruby-gemset
 database.yml
+# Ignore application configuration
+/config/application.yml

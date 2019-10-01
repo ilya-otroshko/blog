@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  before_create :confirmation_token
+
   has_secure_password
   
   mount_uploader :image, DocumentUploader
@@ -9,14 +11,16 @@ class User < ApplicationRecord
 
   validates :email, presence: true, uniqueness: true
 
-  def self.find_or_create_from_auth_hash(auth_hash)
-    return nil if auth_hash.nil?
-    user = User.new(provider: auth_hash.provider, uid: auth_hash.uid)
-    if auth_hash.provider == 'linkedin'
-      user.update(
-          login: auth_hash.info.first_name,
-          email: auth_hash.info.email
-      )
-    end
+def email_activate
+    self.email_confirmed = true
+    self.confirm_token = nil
+    save!(:validate => false)
   end
+  
+  private
+def confirmation_token
+      if self.confirm_token.blank?
+          self.confirm_token = SecureRandom.urlsafe_base64.to_s
+      end
+    end
 end

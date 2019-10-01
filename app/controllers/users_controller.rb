@@ -31,16 +31,15 @@ class UsersController < ApplicationController
   # POST /users
   def create
     @user = User.new(user_params)
-    
-    respond_to do |format|
       if @user.save
-        format.html { redirect_to login_path, notice: 'User was successfully created.' }
-        format.json { render :show, status: :ok, location: @user }
+        UserMailer.registration_confirmation(@user).deliver
+        redirect_to login_path, notice: 'User was successfully created.' 
+        
       else
-        format.html { render :new}
+       render :new
       end
     end
-  end
+ 
 
 	# PATCH/PUT /users/1
   def update
@@ -63,6 +62,17 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def confirm_email
+    user = User.find_by_confirm_token(params[:id])
+    if user
+      user.email_activate
+     
+      redirect_to login_path
+    else
+      redirect_to root_url
+    end
+end
 
   private
   def set_user

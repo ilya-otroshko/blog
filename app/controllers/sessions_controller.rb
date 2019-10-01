@@ -7,12 +7,14 @@ class SessionsController < ApplicationController
 
 	# POST /sessions
 	def create
-		user = User.find_or_create_from_auth_hash(@auth_hash)
-
     	user = User.find_by_email(params[:email])
-    	if user && user.authenticate(params[:password])
-    		session[:user_id] = user.id
-    		redirect_to home_path
+		if user && user.authenticate(params[:password])
+			if user.email_confirmed
+				session[:user_id] = user.id
+				redirect_to home_path
+			else
+				redirect_to login_path, alert: "Confirm your email"
+			end
     	else
       		redirect_to login_path, alert: "Invalid email or password"
     	end
