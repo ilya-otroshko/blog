@@ -16,6 +16,31 @@ def email_activate
     self.confirm_token = nil
     save!(:validate => false)
   end
+  def self.find_or_create_from_auth_hash(auth_hash)
+    return nil if auth_hash.nil?
+    user = User.where(provider: auth_hash.provider, uid: auth_hash.uid).first
+    user = User.new(provider: auth_hash.provider, uid: auth_hash.uid) if user.nil?
+    if auth_hash.provider == 'facebook'
+      user.update(
+          login: user.login || auth_hash.info.name.split(' ')[0],
+          email: auth_hash.uid + auth_hash.provider + '@gmail.com',
+          password: auth_hash.provider + auth_hash.uid + auth_hash.info.name.upcase,
+          password_confirmation: auth_hash.provider + auth_hash.uid + auth_hash.info.name.upcase,
+          remote_image_url: auth_hash.info.image + "?height=300&width=300"
+      )
+    elsif auth_hash.provider == 'linkedin'
+      user.update(
+          name: user.name || auth_hash.info.first_name,
+          surname: user.surname || auth_hash.info.last_name,
+          email: auth_hash.uid + auth_hash.provider + '@gmail.com',
+          password: auth_hash.provider + auth_hash.uid + auth_hash.info.first_name.upcase + '1',
+          password_confirmation: auth_hash.provider + auth_hash.uid + auth_hash.info.first_name.upcase + '1',
+          remote_image_url: Faker::Avatar.image
+      )
+    end
+    user.update(email_confirmed: true)
+    user
+  end
   
   private
 def confirmation_token

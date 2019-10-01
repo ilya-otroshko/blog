@@ -1,3 +1,5 @@
+import { hidden } from "ansi-colors";
+
 window.onload = () => {
       
     $(document).on('click', ".deleteAction", function(){
@@ -14,8 +16,12 @@ window.onload = () => {
         });
     };
 });
+
+
+
 $(document).on('click', ".menu__icon", function () {
     $(this).parent().toggleClass('menu_state_open');
+    $("body").toggleClass("stop-scroll");
   });
 
 
