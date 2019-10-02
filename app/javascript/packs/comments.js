@@ -1,5 +1,3 @@
-import { hidden } from "ansi-colors";
-
 window.onload = () => {
       
     $(document).on('click', ".deleteAction", function(){
