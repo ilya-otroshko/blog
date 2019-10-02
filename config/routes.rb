@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get 'logout' => 'sessions#destroy', as: 'logout'
 
   get '/auth/:provider/callback', :to => 'sessions#create'
-  match "/auth/failure" => redirect("/")
+  get "/auth/failure" => redirect("/")
 
   resources :posts do
     resources :comments
