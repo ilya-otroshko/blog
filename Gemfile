@@ -28,8 +28,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bcrypt', '~> 3.1.7'
 gem 'carrierwave', '~> 1.3.1'
 gem 'cloudinary', '~> 1.11.1' 
-gem "omniauth", "~> 1.1.1"
-gem "omniauth-facebook", "~> 1.4.1"
+gem "omniauth-facebook"
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
