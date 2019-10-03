@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   get 'logout' => 'sessions#destroy', as: 'logout'
 
   get '/auth/:provider/callback', :to => 'sessions#create'
-  get "/auth/failure" => redirect("/")
+  get '/auth/failure' => redirect("/")
+  get 'users/:confirm_token/confirm email', :to => 'sessions#create'
+  get 'search', to: 'posts#index', as: 'search'
 
   resources :posts do
     resources :comments

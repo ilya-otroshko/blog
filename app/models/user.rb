@@ -10,6 +10,10 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
 
   validates :email, presence: true, uniqueness: true
+  validates :email, format: {with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i}
+  validates :password, format: {with: /\A.*(?=.{6,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*\z/}
+  validates :password_confirmation, format: {with: /\A.*(?=.{6,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*\z/}
+ 
 
 def email_activate
     self.email_confirmed = true
@@ -24,8 +28,8 @@ def email_activate
       user.update(
           login: user.login || auth_hash.info.name.split(' ')[0],
           email: auth_hash.uid + auth_hash.provider + '@gmail.com',
-          password: auth_hash.provider + auth_hash.uid + auth_hash.info.name.upcase,
-          password_confirmation: auth_hash.provider + auth_hash.uid + auth_hash.info.name.upcase,
+          password: auth_hash.provider + auth_hash.uid + auth_hash.info.name.upcase + '1Q',
+          password_confirmation: auth_hash.provider + auth_hash.uid + auth_hash.info.name.upcase + '1Q',
           remote_image_url: auth_hash.info.image + "?height=300&width=300"
       )
     elsif auth_hash.provider == 'linkedin'
@@ -33,8 +37,8 @@ def email_activate
           name: user.name || auth_hash.info.first_name,
           surname: user.surname || auth_hash.info.last_name,
           email: auth_hash.uid + auth_hash.provider + '@gmail.com',
-          password: auth_hash.provider + auth_hash.uid + auth_hash.info.first_name.upcase + '1',
-          password_confirmation: auth_hash.provider + auth_hash.uid + auth_hash.info.first_name.upcase + '1',
+          password: auth_hash.provider + auth_hash.uid + auth_hash.info.first_name.upcase + '1Q',
+          password_confirmation: auth_hash.provider + auth_hash.uid + auth_hash.info.first_name.upcase + '1Q',
           remote_image_url: Faker::Avatar.image
       )
     end

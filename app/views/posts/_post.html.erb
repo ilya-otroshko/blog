@@ -1,6 +1,9 @@
 <div class="postsAll">
 
-<%= link_to post.user.login, user_path(post.user),:class => 'postSetting greyButtonWithBorder' %>   
+  <div class="userBlock">
+ 
+  <a href="<%= user_path(post.user) %>" class="postSetting greyButtonWithBorder"> <i class="far fa-user"></i> <%= post.user.login %></a>
+  </div>
      <h3><%= post.title %></h3>
 
      <div class="postImage">

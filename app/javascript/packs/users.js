@@ -51,4 +51,3 @@ $(document).on("click", ".wall", function ( ){
     $( ".check" ).addClass("off");
     $( ".updateUserAvatar" ).addClass("off");
 });
-

@@ -10,18 +10,20 @@ require 'faker'
 User.create(
     login: Faker::Internet.username, 
     email: Faker::Internet.email, 
-    password: "123456", 
-    password_confirmation: "123456", 
-    remote_image_url: Faker::Avatar.image)
+    password: "123Qwe", 
+    password_confirmation: "123Qwe", 
+    remote_image_url: Faker::Avatar.image,
+    email_confirmed: true)
 
 10.times do
 
     User.create(
         login: Faker::Internet.username, 
         email: Faker::Internet.email, 
-        password: "123456", 
-        password_confirmation: "123456", 
-        remote_image_url: Faker::Avatar.image)
+        password: "123Qwe", 
+        password_confirmation: "123Qwe", 
+        remote_image_url: Faker::Avatar.image,
+        email_confirmed: true)
 
     Post.create(
         title: Faker::Food.dish, 

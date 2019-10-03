@@ -1,5 +1,4 @@
 window.onload = () => {
-      
     $(document).on('click', ".deleteAction", function(){
     let current_comment = $(this).parents('li')[0]
     if(confirm("Really?")){
@@ -15,10 +14,32 @@ window.onload = () => {
     };
 });
 
-$(document).bind("fb.loaded", function() {
 
-            console.log("ok")
-        })
+$(document).on('propertychange input', '.searchInput', function () {
+        $('.searchButton').click();
+});
+
+$(document).on('propertychange input', '.searchInputMob', function () {
+    $('.searchButtonMob').click();
+});
+
+$(document).on('scroll', function(){
+
+    if(pageYOffset > 100) {
+        $(".cat").removeClass("off");
+        $(".cat").addClass("on");
+      };
+      if(pageYOffset < 100) {
+        $(".cat").removeClass("on");
+        $(".cat").addClass("off");
+      };
+    
+})
+$(document).on('click', '.cat', function(){
+    $('html, body').animate({scrollTop:0},500);
+    return false;
+})
+
 
 $(document).on('click', ".menu__icon", function () {
     $(this).parent().toggleClass('menu_state_open');

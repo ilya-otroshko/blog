@@ -4,7 +4,17 @@ class PostsController < ApplicationController
 
     # GET /posts
     def index
-        @post = Post.all
+        respond_to do |format|
+        if params[:input]
+            @post = Post.search_by_fullname(params[:input])
+            format.html {}
+            format.js {render "show.js.erb", post: @post}
+        else   
+            @post = Post.all
+            format.html {}
+            format.js {render "show.js.erb", post: @post}
+        end
+    end
     end
 
     # GET /posts/new

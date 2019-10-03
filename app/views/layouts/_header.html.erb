@@ -1,7 +1,25 @@
 <header>
 
-   <a class="headerLink title" href="/">Ninja Cot</a> 
-    <nav >
+   <a class="headerLink title" href="/">Ninja Cod</a> 
+  <div class="cat">
+  <img src="<%= asset_path('cat1.png') %>" alt="cat">
+  <i class="fas fa-long-arrow-alt-up"></i>
+  </div>
+  
+  
+    <nav>
+    
+    <% if request.path == "/" %>
+    
+    <div class="search">
+    <%= form_with url: search_path, method: :get do |f| %>
+    <button class="searchButton"><i class="fas fa-search"></i></button>
+    <%= f.text_field :input, class: "searchInput form-control" %>
+    <% end %>
+  </div>
+
+  <% end %>
+
   <a class="headerLink" id="home" href="/">Home</a> 
 <% if current_user %>
        <a class="headerLink" href="/posts/new">Create new post</a>
@@ -14,7 +32,20 @@
       <% end %>
       
   </nav>
+
+
+
     <div class="burger"> 
+     <% if request.path == "/" %>
+          
+              <div class="search">
+              <%= form_with url: search_path, method: :get do |f| %>
+              <button class="searchButtonMob"><i class="fas fa-search"></i></button>
+              <%= f.text_field :input, class: "searchInputMob form-control" %>
+              <% end %>
+            </div>
+
+        <% end %>
   		<div class="menu__icon">
     		<span></span>
    	 		<span></span>
@@ -23,6 +54,7 @@
 		</div>
 
 				<ul class="mob">
+       
 					<li><a href="/">Home</a></li>
                     <% if current_user %>
 					<li> <a class="headerLink" href="/posts/new">Create new post</a></li>

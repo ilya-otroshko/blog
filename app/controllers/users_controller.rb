@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
       if @user.save
         UserMailer.registration_confirmation(@user).deliver
-        redirect_to login_path, notice: 'User was successfully created.' 
+        redirect_to login_path, alert: 'Confirm your email for log in' 
         
       else
        render :new
@@ -67,10 +67,10 @@ class UsersController < ApplicationController
     user = User.find_by_confirm_token(params[:id])
     if user
       user.email_activate
-     
-      redirect_to login_path
+      session[:user_id] = user.id
+      redirect_to home_path
     else
-      redirect_to root_url
+      redirect_to home_path
     end
 end
 
