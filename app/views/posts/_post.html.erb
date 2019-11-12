@@ -11,7 +11,7 @@
     <%= image_tag(document.path.large.url, alt: 'Image')%>
     <% end %>
      </div>
-   
-    <p><%= post.body %></p>
+     
+    <p><%= truncate(post.body, :length => 300, :separator => '.')%></p>
     <%= link_to "Read more..", post_path(post), :class => 'postSetting greyButtonWithBorder'%>
     </div>
